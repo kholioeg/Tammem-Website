@@ -1,0 +1,249 @@
+@import "../../scss/variables.scss";
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 300px;
+  background-color: $primary-blue;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.sidenav-toolbar {
+  margin-top: 15px;
+}
+
+.toolbar_header {
+  padding: 15px;
+  margin-top: 15px;
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: 1fr 3fr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-image {
+    background-color: white;
+    border-radius: 30%;
+    padding: 10px;
+  }
+  &-text {
+    text-align: start;
+    h3 {
+      color: $primary-green;
+    }
+    h6 {
+      color: white;
+      font-size: 12px;
+    }
+  }
+}
+
+.mat-list-item {
+  margin: 17px 0;
+}
+
+.mat-nav-list {
+  padding: 15px;
+  margin-top: 30px;
+  display: flex;
+  height: calc(100% - 130px);
+  flex-direction: column;
+  justify-content: space-between;
+  .buttom {
+    padding: 15px;
+    .join {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 8px 0;
+      border: 1.5px solid white;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      background-color: transparent;
+    }
+    .join h3 {
+      margin: 3px 7px;
+    }
+    h4 {
+      text-align: start;
+      color: white;
+      margin: 12px 7px;
+    }
+    .app {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 50%;
+        height: 50px;
+        padding: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+  .list-item {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    text-align: start;
+    a {
+      color: white;
+    }
+  }
+}
+
+// style for router link active
+.active,
+.active:hover {
+  background-color: $primary-green;
+  border-radius: 10px;
+}
+
+.active-special,
+.active-special:hover {
+  background-color: #f8cb4e;
+  border-radius: 10px;
+}
+
+// end of sidenav //
+
+// start nav bar //
+
+.nav {
+  position: sticky;
+  top: 0;
+  height: 80px;
+  z-index: 2;
+  background-color: white;
+  .content {
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    .search{
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      margin: 0 40px;
+      align-items: center;
+      .search-input {
+        background-color: $grey-background;
+        text-indent: 20px;
+        text-align: start;
+        border-radius: 7px;
+        width: 100%;
+        border: none;
+      }
+      .search-image{
+        min-width: 35px;
+        min-height: 35px;
+        background-color: $primary-blue;
+        border-radius: 10px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+    }
+    .toggle-button {
+      text-align: start;
+      .menu{
+        color: $primary-blue;
+      }
+    }
+  }
+
+  .lang {
+    min-width: 100px;
+    a {
+      color: grey;
+      text-decoration: none;
+      font-size: 13px;
+      transition: 0.4s;
+      .mat-icon {
+        vertical-align: middle;
+        margin-right: 1px !important;
+        font-size: 23px;
+      }
+      &:hover {
+        color: blue;
+      }
+    }
+    &:not(:last-child) {
+      margin: 0 20px 0 0;
+    }
+    &:focus {
+      outline: none;
+      border: none;
+    }
+    .mat-button-wrapper {
+      img {
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .login{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 7px 10px;
+    border-radius: 7px;
+    min-width: 150px;
+    text-align: start;
+    background-color: $grey-background;
+    cursor: pointer;
+    h5{
+      color: $primary-blue;
+    }
+    &-image{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      mat-icon{
+      color: rgb(202, 202, 202);
+
+      }
+    }
+  }
+
+  .flag {
+    border-radius: 10px;
+    height: 46px;
+    width: 80px;
+    background-color: $grey-background;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app-dropdown {
+    .icon-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .icon {
+        margin: 0;
+        font-size: 11px;
+      }
+    }
+  }
+}

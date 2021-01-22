@@ -1,0 +1,24 @@
+<div class="container" fxLayout="row wrap"  fxLayoutGap="10px" fxLayoutAlign="start center">
+  <mat-card class="example-card" fxFlex="30" *ngFor="let item of services">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{item.name_ar}}</mat-card-title>
+    <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+  </mat-card-header>
+  <img mat-card-image src="{{item.image}}" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <h2>السعر</h2>
+    <h3>
+      من : {{item.price_from}}
+    </h3>
+
+    <h3>
+      الي : {{item.price_to}}
+    </h3>
+  </mat-card-content>
+  <mat-card-actions>
+
+  </mat-card-actions>
+</mat-card>
+
+</div>

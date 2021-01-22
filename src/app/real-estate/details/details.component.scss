@@ -1,0 +1,102 @@
+#container {
+  display: grid;
+  width: 80%;
+  grid-template-columns: 4fr 1fr;
+  margin: 30px auto;
+  justify-items: start;
+}
+#header {
+  grid-column: 1/4;
+  justify-self: start;
+  margin: 15px 0;
+}
+
+#caresoul {
+  width: 90%;
+  position: relative;
+  height: 390px;
+  overflow: visible;
+  margin: 20px 10px;
+}
+
+#caresoul_image {
+  width: 100%;
+  height: 390px;
+  overflow: visible;
+}
+#right_arrow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 658px;
+  top: 175px;
+  overflow: visible;
+}
+
+#left_arrow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 12px;
+  top: 175px;
+  overflow: visible;
+}
+
+#caresoul_slider {
+  position: absolute;
+  width: 96px;
+  height: 14px;
+  left: 302px;
+  top: 366px;
+  overflow: visible;
+}
+
+#details {
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+}
+
+.box{
+  margin: 20px 0;
+  border-radius: 10px;
+  padding: 20px 15px;
+  background-color: white;
+  width: 90%;
+}
+
+#details_price{
+  justify-self: left;
+}
+
+.address{
+  grid-column: 1/4;
+}
+
+.address .text{
+  margin-right: 10px ;
+}
+
+.meters{
+  grid-column: 1/4;
+}
+
+.meters .text{
+  margin-right: 10px ;
+}
+
+.ad-details{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+}
+
+.ad-details .title{
+  grid-column: 1/4;
+}
+
+.ad-details .details_columns{
+  display: grid;
+  grid-column: 1/4;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+}
+
+

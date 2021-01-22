@@ -1,0 +1,22 @@
+
+  <mat-toolbar class="toolbar">
+    <div class="select">
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" value = "menu">
+      <mat-button-toggle value="map" [routerLink]="['/home/map']">{{"map" | translate}}</mat-button-toggle>
+      <mat-button-toggle value="menu" [routerLink]="['/home']">{{"menu" | translate}}</mat-button-toggle>
+    </mat-button-toggle-group>
+    </div>
+
+    <div class="options">
+      <div class="round" >
+        <mat-icon>location_on</mat-icon>
+      </div>
+      <img src="../../../../assets/icons/menu_2.svg" (click) = "openDialog()" alt="">
+      <div class="round">
+        <img src="../../../../assets/icons/Regions.svg" alt="">
+      </div>
+    </div>
+
+    <div></div>
+  </mat-toolbar>
+

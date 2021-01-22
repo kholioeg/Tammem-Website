@@ -1,0 +1,173 @@
+<mat-sidenav-container  autosize class="sidenav-container" [dir]='dir'>
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar style="margin-bottom: 30px" >
+      <mat-list>
+        <mat-list-item>
+          <span class="img_container">
+            <img src="assets/images/logo.png" />
+          </span>
+          <div style="margin: 20px">
+            <p style="margin: 0; padding: 0; color: #7ac04e">منصة تمم</p>
+            <p style="margin: 0; padding: 0; color: white">
+              شريكك في صفقة العمر
+            </p>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item role="listitem" routerLinkActive="active">
+        <div
+          style="width: 100%; display: flex; align-items: center"
+          [routerLink]="['/real-estates']"
+        >
+          <span class="material-icons"> home </span>
+          <a>الرئيسية</a>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item role="listitem" routerLinkActive="active">
+        <div
+          style="width: 100%; display: flex; align-items: center"
+          [routerLink]="['/special-offers']"
+        >
+          <span class="material-icons"> star </span>
+          <a>عروض مميزة</a>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item role="listitem" routerLinkActive="active">
+        <div
+          style="width: 100%; display: flex; align-items: center"
+          [routerLink]="['realestate/add']"
+        >
+          <a> إضافة عقار </a>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item
+        role="listitem"
+        [routerLink]="['/profile']"
+        routerLinkActive="active"
+      >
+        <span class="material-icons"> person </span>
+        <a>الحساب</a>
+      </mat-list-item>
+
+      <mat-list-item
+        role="listitem"
+        [routerLink]="['/budgets']"
+        routerLinkActive="active"
+      >
+        <span class="material-icons"> local_atm </span>
+        <a>الرسوم و الإعلان</a>
+      </mat-list-item>
+
+      <mat-list-item role="listitem" routerLinkActive="active">
+        <span class="material-icons"> local_atm </span>
+        <a>المدونة</a>
+      </mat-list-item>
+
+      <mat-list-item
+        role="listitem"
+        [routerLink]="['/edit-profile']"
+        routerLinkActive="active"
+      >
+        <a> التعديل علي حسابي</a>
+      </mat-list-item>
+
+      <mat-list-item
+        role="listitem"
+        [routerLink]="['/services']"
+        routerLinkActive="active"
+      >
+        <a>الخدمات المتاحة</a>
+      </mat-list-item>
+    </mat-nav-list>
+
+    <div class="bottom_links">
+      <button>إنضم كمزود خدمة</button>
+      <h5 style="text-align: start; color: white; margin-right: 20px">
+        التطبيق متاح علي
+      </h5>
+      <div style="width: 40%; display: inline">
+        <img
+          width="40%"
+          height="40px"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/1280px-Google_Play_Store_badge_EN.svg.png"
+          alt=""
+        />
+      </div>
+
+      <div style="width: 40%; display: inline; margin-left: 10px">
+        <img
+          width="40%"
+          height="40px"
+          src="https://selinko.com/site/wp-content/uploads/2017/10/itunes-app-store-logo-e1508928959717.png"
+          alt=""
+        />
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <div class="toggle_button_container">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+        >
+          <mat-icon
+            style="color: rgb(30, 68, 136)"
+            aria-label="Side nav toggle icon"
+            >menu</mat-icon
+          >
+        </button>
+      </div>
+
+      <input type="text" placeholder="إبحث عن عروض مختلفة" class="search" />
+      <button class="search_button">
+        <span style="color: white" class="material-icons"> search </span>
+      </button>
+      <span class="spacer"></span>
+
+      <div>
+        <div class="widget-text">
+          <a mat-button [matMenuTriggerFor]="langMenu" #langMenuTrigger="matMenuTrigger">
+            <img [src]="flag.image" width="18">
+            <span fxShow="false" fxShow.gt-sm class="flag-menu-title">{{flag.name}}</span>
+            <mat-icon class="mat-icon-sm caret cur-icon">arrow_drop_down</mat-icon>
+        </a>
+        <mat-menu #langMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-dropdown">
+            <span>
+                <button mat-menu-item *ngFor="let flag of flags" (click)="changeLang(flag)">
+                    <img [src]="flag.image" width="18"> {{flag.name}}
+                </button>
+            </span>
+        </mat-menu>
+        </div>
+        <!-- <button (click)= "changeLang('ar')">ar</button>
+          <button (click)= "changeLang('en')">en</button> -->
+      </div>
+      <div>
+        <button *ngIf="user" mat-button style="color: green" (click)="logout()">
+          تسجيل الخروج
+        </button>
+
+        <button *ngIf="!user" mat-button style="color: green" (click)="login()">
+          تسجيل الدخول
+        </button>
+      </div>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

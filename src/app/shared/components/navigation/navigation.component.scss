@@ -1,0 +1,138 @@
+$left: left;
+$right: right;
+
+.sidenav-container {
+  height: 100%;
+}
+
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+
+:host ::ng-deep .mat-drawer-inner-container {
+  background-color: rgb(30, 68, 136);
+}
+
+:host ::ng-deep .mat-list-item{
+  color: white;
+}
+
+:host ::ng-deep .mat-ripple:hover, :host ::ng-deep .mat-ripple:active {
+  background-color: none;
+}
+
+:host ::ng-deep .mat-nav-list{
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+.active{
+  background-color: #7AC04E;
+  border-radius: 10px;
+}
+
+.active:hover, .active:active{
+  background-color: #7AC04E;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.img_container{
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 30%;
+}
+
+.img_container img{
+  width: 30px;
+  height: 25px;
+}
+
+.mat-sidenav{
+  width: 270px;
+}
+
+.mat-toolbar{
+  background-color: white;
+}
+
+.toggle_button_container{
+  width: 8%;
+}
+
+.search{
+  width: 40%;
+  border-radius: 0 3px 3px 0;
+  height: 50%;
+  background-color: #F5F6FA;
+  border: 1px solid #e8e8eb;
+}
+
+.search:focus{
+  outline: none;
+}
+
+.search_button{
+  border-radius: 4px 0 0 4px;
+  background-color: rgb(30, 68, 136);
+  border: none;
+  height: 55%;
+}
+
+.bottom_links{
+  margin-top: 55%;
+  height: 100px;
+  text-align: center;
+}
+
+.bottom_links button{
+  width: 80%;
+  height: 45px;
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.widget-text {
+  a {
+    color: grey;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.4s;
+    .mat-icon {
+      vertical-align: middle;
+      margin-right: 1px !important;
+      font-size: 23px;
+    }
+    &:hover {
+      color: blue;
+    }
+  }
+  &:not(:last-child) {
+    margin: 0 20px 0 0;
+  }
+  &:focus {
+    outline: none;
+    border: none;
+  }
+  .mat-button-wrapper {
+    img {
+      margin-right: 3px;
+    }
+  }
+}
+
+

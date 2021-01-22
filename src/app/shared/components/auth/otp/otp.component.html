@@ -1,0 +1,9 @@
+
+<div class="otp">
+  <ng-otp-input  (onInputChange)="onOtpChange($event)" [config]="{length:6, allowNumbersOnly: true}"></ng-otp-input>
+</div>
+<div class="options">
+  <button class="btn" (click)="sendOtpCode()"> تسجيل الدخول </button>
+  <h3 class="not-send">لم يصل رمز التحقيق بعد ؟ ({{timer}})</h3>
+  <h3 id="recaptcha-container" (click) = "resendOtp()" class="resend">إعادة الإرسال</h3>
+</div>

@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+@import './app/shared/scss/variables.scss';
+
+*{
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+agm-map {
+  height: 500px;
+}
+
+.mat-sidenav-container{
+  background-color: #e9eaec;
+}
+
+.green-background{
+  background-color: #7AC04E !important;
+  color: white;
+}
+
+.custom{
+  height: 100px;
+  flex: 1;
+}
+
+button:focus{
+  outline: none;
+}
+
+.order-dialog .mat-dialog-container{
+  border-radius: 20px;
+}
+
+.filter_dialog .mat-dialog-container{
+  background-color: $grey-background;
+}
+
+

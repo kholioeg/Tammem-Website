@@ -1,0 +1,343 @@
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 80%;
+  margin: 10px auto;
+  padding: 7px 15px;
+}
+
+.options h3 {
+  margin: 0;
+  cursor: pointer;
+}
+
+.option-container {
+  text-align: center;
+  width: 50%;
+  cursor: pointer;
+}
+
+.active-option {
+  background-color: green;
+  transition: 0.3s;
+  color: white;
+  border-radius: 5px;
+  padding: 3px 7px;
+  margin: 0 8px;
+  cursor: pointer;
+}
+
+.yearly {
+  color: grey;
+  font-size: 14px;
+}
+
+.cards-container {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1280px;
+}
+
+.card {
+  position: relative;
+  border-radius: 5px;
+  width: 100%;
+  margin: 10px;
+  position: relative;
+  max-width: 390px;
+  background-color: white;
+  min-height: 399px;
+}
+
+.card__price {
+  text-align: center;
+  color: #1e4488;
+  margin-top: 15px;
+}
+
+.card__details {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
+}
+
+.card__details-col1 {
+  width: 13%;
+}
+
+.card__details-col2 {
+  width: 87%;
+}
+
+.card__details h5 {
+  display: inline-flex;
+  margin: 0;
+}
+.dimmed {
+  color: grey;
+  font-size: 16px;
+}
+.dimmed_pro {
+  color: grey;
+  font-size: 7px;
+}
+
+.enroll {
+  width: 80%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  margin: 15px 0;
+  border: 1.5px solid green;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.enroll_pro {
+  width: 80%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  margin: 15px 0;
+  background: green;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.enroll_essential {
+  margin-top: 53px;
+}
+.enroll h4 {
+  margin: 0;
+  color: green;
+}
+
+.enroll_pro h4 {
+  margin: 0;
+  color: green;
+  color: white;
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  .cards-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .options {
+    width: 50%;
+  }
+  .card {
+    flex-basis: 45%;
+    position: relative;
+  }
+  .pro {
+    order: 3;
+  }
+
+  .dimmed_pro {
+    font-size: 6px;
+  }
+}
+
+@media (min-width: 960px) {
+  .cards-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .options {
+    width: 30%;
+  }
+  .card {
+    flex-basis: 29%;
+  }
+  .dimmed_pro {
+    font-size: 6px;
+  }
+}
+
+.card__top {
+  display: block;
+  text-align: center;
+  width: 30%;
+  background-color: #1e4488;
+  padding: 10px 50px;
+  border-radius: 0 0 10px 10px;
+  margin: 0 auto;
+}
+
+.card__top h4 {
+  color: white;
+  margin: 0;
+}
+
+// marketing Solutions
+
+.marketing_solutions {
+  display: flex;
+  width: 90%;
+  margin: 20px auto;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.icon {
+  display: flex;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex: 1;
+  height: 70px;
+  background-color: rgb(236, 234, 234);
+  border-radius: 50%;
+}
+
+.icon span {
+  align-self: center;
+}
+.text {
+  flex: 9;
+  padding: 0 15px;
+}
+
+.text h3,
+.text h6 {
+  margin: 0;
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 2;
+  align-content: flex-end;
+  background-color: #1e4488;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.button h3 {
+  margin: 0;
+  color: white;
+}
+
+// owners_card
+
+.owners_card_container {
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.owners_card {
+  position: relative;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  margin: 10px;
+  max-width: 390px;
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 195px;
+}
+
+.owners_card > h3 {
+  color: #889cc0;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.owners_card > h5 {
+  color: rgb(155, 155, 155);
+  font-size: 14px;
+  font-weight: bold;
+}
+.pay {
+  width: 80%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1.5px solid green;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.pay h3 {
+  margin: 0;
+  color: green;
+}
+
+.pay-pro {
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80%;
+  border-radius: 5px;
+  background-color: #1e4488;
+  padding: 10px;
+  width: 80%;
+}
+
+.pay-pro h3 {
+  margin: 0;
+  color: white;
+}
+.owners_card h1 {
+  color: #1e4488;
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  .owners_card_container {
+    max-width: 1280px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .owners_card {
+    width: 50%;
+  }
+}
+
+@media (min-width: 960px) {
+  .owners_card_container {
+    max-width: 1280px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .owners_card {
+    width: 33%;
+  }
+}

@@ -1,0 +1,75 @@
+:host{
+  box-sizing: border-box;
+}
+
+:host ::ng-deep agm-map {
+  height: calc(100% - 149px);
+}
+
+.container{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.footer{
+  width: 80%;
+  height: 70px;
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+}
+
+.start{
+  flex: 2 2 150px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
+}
+
+.start_content{
+  width: 200px;
+  border-radius: 10px;
+  background-color: white;
+  height: 80%;
+  border: 2px solid #1E4488;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer_active{
+  background-color: #1E4488;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.menu{
+  flex: 1 1 50%;
+}
+
+.map{
+  flex: 1 1 50%;
+}
+
+.mid{
+  display: flex;
+  flex: 5 5 auto;
+  cursor: pointer;
+}
+
+.round{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 2px grey;
+  margin: 10px;
+}
+

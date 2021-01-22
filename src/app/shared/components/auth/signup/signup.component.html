@@ -1,0 +1,84 @@
+
+  <div class="details">
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <div name="image" ngModel class="image"></div>
+      <h4>الصورة الشخصية</h4>
+
+      <div class="data">
+        <div class="row">
+          <span class="material-icons icon"> person </span>
+          <mat-form-field class="input">
+
+          <input
+            type="text"
+            name="name"
+            matInput
+            placeholder="اسمك الكامل"
+            required
+            ngModel
+            #name = 'ngModel'
+          />
+          <mat-error *ngIf="name.hasError('required')"> requred field</mat-error>
+        </mat-form-field>
+
+        </div>
+
+        <div class="row">
+          <span class="material-icons icon"> stay_current_portrait </span>
+
+          <ngx-intl-tel-input
+            [cssClass]="'custom'"
+            [preferredCountries]="preferredCountries"
+            [enableAutoCountrySelect]="true"
+            [enablePlaceholder]="true"
+            [searchCountryFlag]="true"
+            [searchCountryField]="[
+              SearchCountryField.Iso2,
+              SearchCountryField.Name
+            ]"
+            [selectFirstCountry]="false"
+            [selectedCountryISO]="CountryISO.SaudiArabia"
+            [maxLength]="15"
+            [tooltipField]="TooltipLabel.Name"
+            [phoneValidation]="true"
+            [separateDialCode]="true"
+            [numberFormat]="PhoneNumberFormat.National"
+            name="phone"
+            ngModel
+          >
+          </ngx-intl-tel-input>
+        </div>
+
+        <div class="row">
+          <span class="material-icons icon"> stay_current_portrait </span>
+
+          <input
+            type="text"
+            name="email"
+            class="input"
+            placeholder="البريد الإلكتروني"
+            required
+          />
+        </div>
+
+        <div class="account_type">
+          <h3> نوع الحساب </h3>
+          <div class="types">
+            <div class="text" appButtonClicked>مستخدم</div>
+            <div class="text" appButtonClicked>مالك</div>
+            <div class="text" appButtonClicked>وسيط عقاري</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="terms">
+        <input type="checkbox" name="agree" ngModel>
+        <h4>أوافق على شروط الاستخدام في منصة تمم</h4>
+      </div>
+
+      <button mat-raised-button [disabled]="form.invalid" type="submit" class="submit-button">
+        تسجيل الدخول
+      </button>
+    </form>
+  </div>
+

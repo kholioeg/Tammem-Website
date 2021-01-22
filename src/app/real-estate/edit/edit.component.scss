@@ -1,0 +1,51 @@
+.form {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.full-width {
+  width: 100%;
+  padding: 0px 20px;
+}
+
+.example-radio-group {
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  padding: 5px;
+}
+
+.check-box {
+  margin: 0px 15px;
+}
+
+.images {
+  margin: 15px auto;
+}
+
+.image {
+  width: 95%;
+  height: 300px;
+  padding: 20px;
+}
+
+.images-container
+{
+  position: relative;
+}
+.remove {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: red;
+  color: white;
+  width: 20px;
+  border-radius: 50%;
+}
+
+.remove span{
+  display: inline-block;
+  margin-right: 5px;
+  cursor: pointer;
+}

@@ -1,0 +1,24 @@
+<div class="title" *ngIf="signup">
+  <h2 class="blue-text">يسعدنا انضمامك إلينا</h2>
+  <h4 class="grey_text">يرجى إكمال البيانات لإنشاء الحساب الخاص بك</h4>
+</div>
+
+<div class="title" *ngIf="login && !otp">
+  <h2 class="blue-text">أهلا بعودتك مجدداً</h2>
+  <h4 class="grey_text">يرجى تسجبل الدخول للوصول إلي حسابك في تمم</h4>
+</div>
+
+<div class="title" *ngIf="otp">
+  <h2 class="blue-text">تأكيد الحساب</h2>
+  <h4 class="grey_text">ادخل الكود المرسل إلي {{phoneNumber}}</h4>
+</div>
+
+<div class="options" *ngIf="!otp">
+  <div (click) = "signup = false; login = true" class="green-background"  appButtonClicked>تسجيل الدخول</div>
+  <div (click) = "signup = true; login = false" appButtonClicked>إنشاء حساب جديد</div>
+</div>
+
+
+<app-signup *ngIf="signup"></app-signup>
+<app-login (otpRecieved)= "changeOtp($event)"  *ngIf="login &&!otp"></app-login>
+<app-otp *ngIf="otp"> </app-otp>

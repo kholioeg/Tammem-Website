@@ -1,0 +1,180 @@
+<mat-sidenav-container class="sidenav-container" [dir]="direction">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar class="sidenav-toolbar">
+      <div class="toolbar_header">
+        <div class="toolbar_header-image">
+          <img
+            width="35px"
+            height="35px"
+            src="../../../../assets/images/logo.png"
+            alt=""
+          />
+        </div>
+
+        <div class="toolbar_header-text">
+          <h3>{{ "tammem_platform" | translate }}</h3>
+          <h6>{{ "partner" | translate }}</h6>
+        </div>
+      </div>
+    </mat-toolbar>
+    <mat-nav-list>
+      <div>
+        <mat-list-item role="listitem" routerLinkActive="active">
+          <div class="list-item" [routerLink]="['/home']">
+            <span>
+              <img src="../../../../assets/icons/home.svg" alt="" />
+            </span>
+            <a>{{ "home" | translate }}</a>
+          </div>
+        </mat-list-item>
+
+        <mat-list-item role="listitem" routerLinkActive="active-special">
+          <div class="list-item" [routerLink]="['special-offers']">
+            <span>
+              <img src="../../../../assets/icons/Discount.svg" alt="" />
+            </span>
+            <a>{{ "special" | translate }}</a>
+          </div>
+        </mat-list-item>
+
+        <mat-list-item role="listitem" routerLinkActive="active">
+          <div class="list-item" [routerLink]="['/profile']">
+            <span>
+              <img src="../../../../assets/icons/copy.svg" alt="" />
+            </span>
+            <a>{{ "my_orders" | translate }}</a>
+          </div>
+        </mat-list-item>
+
+        <mat-list-item role="listitem" routerLinkActive="active">
+          <div class="list-item" [routerLink]="['/budgets']">
+            <span>
+              <img src="../../../../assets/icons/money_2.svg" alt="" />
+            </span>
+            <a>{{ "budgets" | translate }}</a>
+          </div>
+        </mat-list-item>
+
+        <mat-list-item role="listitem" routerLinkActive="active">
+          <div class="list-item" [routerLink]="['/blog']">
+            <span>
+              <img src="../../../../assets/icons/report.svg" alt="" />
+            </span>
+            <a>{{ "blog" | translate }}</a>
+          </div>
+        </mat-list-item>
+      </div>
+
+      <div class="buttom">
+        <div class="join">
+          <img src="../../../../assets/icons/Engineer.svg" alt="" />
+          <h3>{{ "join" | translate }}</h3>
+        </div>
+
+        <h4>
+          {{ "available" | translate }}
+        </h4>
+
+        <div class="app">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/1280px-Google_Play_Store_badge_EN.svg.png"
+            alt=""
+          />
+
+          <img
+            src="https://selinko.com/site/wp-content/uploads/2017/10/itunes-app-store-logo-e1508928959717.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="nav">
+      <div class="content">
+
+        <div class="toggle-button">
+          <button
+            type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            (click)="drawer.toggle()"
+          >
+            <mat-icon
+              aria-label="Side nav toggle icon"
+              [dir]="direction"
+              class="menu"
+              >menu</mat-icon
+            >
+          </button>
+        </div>
+
+        <div class="search">
+
+          <input
+          type="text"
+          class="search-input"
+          placeholder="{{'search' | translate}}"
+          />
+
+          <div class="search-image">
+            <mat-icon>search</mat-icon>
+          </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div class="lang">
+          <a
+            mat-button
+            class="flag"
+            [matMenuTriggerFor]="langMenu"
+            #langMenuTrigger="matMenuTrigger"
+          >
+            <img [src]="flag?.image" width="22" style="margin: 5px" />
+            <mat-icon class="mat-icon-sm caret cur-icon"
+              >keyboard_arrow_down</mat-icon
+            >
+          </a>
+          <mat-menu
+            #langMenu="matMenu"
+            [overlapTrigger]="false"
+            xPosition="before"
+            class="app-dropdown"
+          >
+            <span>
+              <button
+                class="icon-btn"
+                mat-menu-item
+                *ngFor="let flag of flags"
+                (click)="changeLang(flag)"
+              >
+                <img [src]="flag.image" width="18" /> {{ flag.name }}
+                <mat-icon class="icon" *ngIf="flag.checked">check</mat-icon>
+              </button>
+            </span>
+          </mat-menu>
+        </div>
+
+        <div class="login" (click) = "login()">
+
+         <div class="login-image">
+          <mat-icon>person_outline</mat-icon>
+        </div>
+           <h5>{{"login" | translate}}</h5>
+        </div>
+      </div>
+
+    </mat-toolbar>
+
+    <ng-content></ng-content>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

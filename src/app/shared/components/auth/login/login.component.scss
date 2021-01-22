@@ -1,0 +1,117 @@
+.container{
+  margin: 10px 0;
+  padding: 3px 5px;
+  background-color:#f0f0f0;
+}
+.title {
+  text-align: center;
+}
+.blue-text {
+  color: rgba(30, 68, 136, 1);
+}
+.grey_text {
+  color: rgba(108, 120, 135, 1);
+}
+
+.options div {
+  text-align: center;
+  display: inline-block;
+  width: 50%;
+  background-color: #f5f6fa;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.row{
+  display: flex;
+  height: 60px;
+  flex-wrap: nowrap;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  background-color: rgb(243, 243, 243);
+  margin: 22px 0;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.icon{
+  width: 10%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  color: #e7e8eb;
+  background-color: white;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.submit-button {
+  width: 100%;
+  border: none;
+  background-color: green;
+  color: white;
+  height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+:host ::ng-deep #phone {
+  width: 100%;
+  color: grey;
+  border: none;
+  height: 40px;
+  background-color: white;
+  border-radius: 10px 0px 0px 10px;
+  border: 1px solid white;
+}
+
+:host ::ng-deep .iti--allow-dropdown {
+  width: 100%;
+}
+
+:host ::ng-deep #country-search-box{
+  direction:ltr
+}
+
+:host ::ng-deep .iti__country-list {
+  width: 100%;
+}
+
+:host ::ng-deep .country-dropdown{
+  width: 300px !important;
+}
+
+.green-background{
+  background-color: green;
+  color: white;
+}
+
+.btn{
+  width: 100%;
+  border-radius: 10px;
+  background-color: #7AC04E;
+  color: white;
+}
+
+#recaptcha-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto;
+  text-align: center;
+}
+
+.error{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 7px;
+  text-align: center;
+  background-color: rgb(228, 75, 75);
+  color: white;
+}
+
+.otp{
+  margin: 0 auto;
+}

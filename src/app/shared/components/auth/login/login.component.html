@@ -1,0 +1,77 @@
+<!-- <div [hidden]="user">
+  <h1>Sign In with Your Phone Number</h1>
+
+  <label for="phone">Phone Number</label><br />
+  <input
+    type="text"
+    [(ngModel)]="phoneNumber.country"
+    class="input"
+    placeholder="1"
+    maxlength="2"
+  />
+  <input
+    type="text"
+    [(ngModel)]="phoneNumber.number"
+    class="input"
+    placeholder="1111"
+    maxlength="10"
+  />
+
+  <div id="recaptcha-container"></div>
+
+  <button (click)="sendLoginCode()">SMS Text Login Code</button>
+
+  <div *ngIf="windowRef.confirmationResult">
+    <hr />
+    <label for="code">Enter your Verification Code Here</label><br />
+    <input type="text" name="code" [(ngModel)]="verificationCode" />
+
+    <button (click)="verifyLoginCode()">Verify</button>
+  </div>
+</div>
+
+<div *ngIf="user">
+  <!-- You have successfully logged in with your phone number! UserId:
+  {{ user?.uid }} -->
+<!-- <router-outlet></router-outlet> -->
+<!-- </div> -->
+
+<!-- <div class="container"> -->
+<div *ngIf="!otp">
+
+  <div class="row">
+    <span class="material-icons icon"> stay_current_portrait </span>
+
+    <form  #form="ngForm">
+      <ngx-intl-tel-input
+      #number
+      [cssClass]="'custom'"
+      [preferredCountries]="preferredCountries"
+      [enableAutoCountrySelect]="true"
+      [enablePlaceholder]="true"
+      [searchCountryFlag]="true"
+      [searchCountryField]="[
+      SearchCountryField.Iso2,
+      SearchCountryField.Name
+      ]"
+      [selectFirstCountry]="false"
+      [selectedCountryISO]="CountryISO.SaudiArabia"
+      [maxLength]="15"
+      [tooltipField]="TooltipLabel.Name"
+      [phoneValidation]="true"
+      [separateDialCode]="true"
+      [numberFormat]="PhoneNumberFormat.National"
+      ngModel
+      name = "phoneNumber"
+      >
+    </ngx-intl-tel-input>
+  </form>
+
+</div>
+<div class="error" *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
+
+<button  id="recaptcha-container" class="btn" (click)="sendLoginCode(form)"> تسجيل الدخول </button>
+</div>
+

@@ -1,0 +1,265 @@
+<div class="container">
+  <h4>الرسوم و الإعلان</h4>
+
+  <div class="options">
+    <div
+      [ngClass]="{ 'active-option': companies == true }"
+      (click)="isCompany($event)"
+    >
+      <h3>المكاتب و الشركات</h3>
+    </div>
+
+    <div
+      [ngClass]="{ 'active-option': owner == true }"
+      class="option-container"
+      (click)="isOwner($event)"
+    >
+      <h3>الملاك</h3>
+    </div>
+  </div>
+
+  <div *ngIf="companies; then company; else owners"></div>
+
+  <ng-template #owners>
+    <div class="owners_card_container">
+      <div class="owners_card">
+        <h3>رسوم البيع</h3>
+
+        <h5>تدفع بعد بيع العقار</h5>
+        <h1>950 رس</h1>
+
+        <div class="pay">
+          <h3>دفع الرسوم</h3>
+        </div>
+      </div>
+
+      <div class="owners_card">
+        <h3>رسوم البيع</h3>
+
+        <h5>تدفع بعد بيع العقار</h5>
+        <h1>950 رس</h1>
+
+        <div class="pay">
+          <h3>دفع الرسوم</h3>
+        </div>
+      </div>
+
+      <div class="owners_card">
+        <span class="material-icons" style="color: rgb(6, 182, 6); margin: 15px;"> emoji_objects </span>
+
+        <h3>خدمات التسويق الحصري</h3>
+
+        <div class="pay-pro">
+          <h3>دفع الرسوم</h3>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #company>
+    <div class="cards-container">
+      <div class="card essential">
+        <div class="card__top">
+          <h4>الأساسية</h4>
+        </div>
+
+        <div class="card__price">
+          <h2>1500 ر.س <span class="yearly">سنوياً</span></h2>
+        </div>
+
+        <div class="card__details">
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2"><h5>مستخدم واحد فقط</h5></div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>ترقية مؤقتة لإعلان 1 في التطبيق(فئة 75)</h5>
+          </div>
+
+          <div class="card__details-col1"></div>
+          <div class="card__details-col2 dimmed">
+            <h5>ترقية مؤقتة 3 إعلانات في التطبيق(فئة 75)</h5>
+          </div>
+
+          <div class="card__details-col1"></div>
+          <div class="card__details-col2 dimmed">
+            <h5>تمييز إعلان واحد علي الموقع لمدة أسبوع</h5>
+          </div>
+
+          <div class="card__details-col1"></div>
+          <div class="card__details-col2 dimmed">
+            <h5>مدير حساب يساعد في إدارة العضوية</h5>
+          </div>
+
+          <div class="card__details-col1"></div>
+          <div class="card__details-col2 dimmed">
+            <h5>إمكانية زيادة مستخدمين جدد</h5>
+          </div>
+
+          <div class="card__details-col1"></div>
+          <div class="card__details-col2 dimmed">
+            <h5>إمكانية إضافة إعلانات حتي 150 إعلان</h5>
+          </div>
+
+          <div class="enroll enroll_essential">
+            <h4>اشتراك</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="card pro">
+        <div class="card__top">
+          <h4>الإحترافية</h4>
+        </div>
+
+        <div class="card__price">
+          <h2>3800 ر.س <span class="yearly">سنوياً</span></h2>
+        </div>
+
+        <div class="card__details">
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>عضوية مدير واحد و 2 مستخدمين</h5>
+          </div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>
+              ترقية دائمة إعلان 1
+              <span class="dimmed_pro">(أولوية الظهور خلال مدة الإشتراك)</span>
+            </h5>
+          </div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>ترقية مؤقتة 3 إعلانات في التطبيق(فئة 75)</h5>
+          </div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>تمييز إعلان واحد علي الموقع لمدة أسبوع</h5>
+          </div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>مدير حساب يساعد في إدارة العضوية</h5>
+          </div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>إمكانية زيادة مستخدمين جدد</h5>
+          </div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>إمكانية إضافة إعلانات حتي 150 إعلان</h5>
+          </div>
+
+          <div class="enroll_pro">
+            <h4>اشتراك</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__top">
+          <h4>المميزة</h4>
+        </div>
+
+        <div class="card__price">
+          <h2>5000 ر.س <span class="yearly">سنوياً</span></h2>
+        </div>
+
+        <div class="card__details">
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>عضوية مدير واحد و 4 مستخدمين مجاناً</h5>
+          </div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>
+              ترقية دائمة دائمة 3 إعلانات
+              <span class="dimmed_pro">(أولوية الظهور خلال مدة الإشتراك)</span>
+            </h5>
+          </div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>ترقية مؤقتة 3 إعلانات في التطبيق(فئة 75)</h5>
+          </div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>تمييز إعلان واحد علي الموقع لمدة أسبوع</h5>
+          </div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>مدير حساب يساعد في إدارة العضوية</h5>
+          </div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>إمكانية زيادة مستخدمين جدد</h5>
+          </div>
+
+          <div class="card__details-col1">
+            <span class="material-icons" style="color: green"> check </span>
+          </div>
+          <div class="card__details-col2">
+            <h5>إمكانية إضافة إعلانات حتي 150 إعلان</h5>
+          </div>
+
+          <div class="enroll">
+            <h4>اشتراك</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="marketing_solutions">
+      <div class="icon">
+        <span class="material-icons" style="color: green"> emoji_objects </span>
+      </div>
+
+      <div class="text">
+        <h3>حلول تسويقية</h3>
+        <h6>تعرف علي أحدث الحلول التسويقية للمطورين و العقاريين و الشركات</h6>
+      </div>
+
+      <div class="button">
+        <h3>إضغط هنا</h3>
+      </div>
+    </div>
+  </ng-template>
+</div>

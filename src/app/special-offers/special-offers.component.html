@@ -1,0 +1,110 @@
+<mat-form-field>
+  <input
+    matInput
+    type="text"
+    placeholder="إبحث"
+    [(ngModel)]="titles"
+    (input)="search()"
+  />
+  <button
+    mat-button
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="onSearchClear()"
+  >
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-form-field>
+
+<h2 style="color: grey">جميع التصنيفات</h2>
+<div
+  fxLayout="row wrap"
+  fxLayout.lt-sm="column"
+  fxLayoutAlign="space-evently center"
+  fxLayoutAlign.lt-sm="space-evently center"
+  fxLayoutAlign.lt-md="space-evently center"
+  class="container"
+>
+  <mat-card
+    fxFlex.lt-lg="30%"
+    fxFlex.lt-md="40%"
+    (click)="getDestails(item.id)"
+    *ngFor="let item of realEstate"
+    class="card"
+  >
+    <img mat-card-image src="{{ item.imagesUrls[0] }}" class="header-image" />
+    <mat-card-content>
+      <mat-card-title style="display: flex">
+        {{ item.title }}
+        <span
+          class="material-icons"
+          style="color: rgb(30, 68, 136); font-size: 16px"
+        >
+          check_circle
+        </span>
+        <span class="spacer"></span>
+        <div class="special">
+          <span
+            class="material-icons"
+            style="
+              font-size: 15px;
+              width: 20px;
+              display: inline-block;
+              vertical-align: center;
+            "
+          >
+            grade
+          </span>
+          <span
+            style="font-size: 12px; display: block; width: 30px; float: left"
+          >
+            مميز
+          </span>
+        </div>
+      </mat-card-title>
+      <!-- <mat-card-subtitle>{{item.createdAt.toDate() | date: "short":"":"ar-EG"}}</mat-card-subtitle> -->
+      <div style="margin: 0 15px">
+        <span
+          class="material-icons"
+          style="color: rgb(30, 68, 136); font-size: 22px"
+        >
+          location_on
+        </span>
+        <span style="color: grey">{{ item.location.address }}</span>
+      </div>
+
+      <div style="margin: 0 15px">
+        <span
+          class="material-icons"
+          style="color: rgb(30, 68, 136); font-size: 22px"
+        >
+          square_foot
+        </span>
+        <span style="color: grey">{{ item.area }}</span>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <!-- <button
+        [routerLink]="['/edit-real-estate', item.id]"
+        routerLinkActive="router-link-active"
+        mat-raised-button
+        color="primary"
+      >
+        تعديل
+      </button>
+
+      <button
+        routerLinkActive="router-link-active"
+        (click)="onDelete(item.id)"
+        mat-raised-button
+        color="primary"
+      >
+        حذف
+      </button> -->
+    </mat-card-actions>
+  </mat-card>
+
+<div *ngIf="!realEstate" class="spinner-container">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

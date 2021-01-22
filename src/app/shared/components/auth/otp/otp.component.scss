@@ -1,0 +1,43 @@
+:host ::ng-deep .wrapper {
+  direction: ltr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:host ::ng-deep .otp-input:focus {
+  border: 2px solid #22438a;
+}
+
+:host ::ng-deep .otp-input {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.otp {
+  background-color: #f5f5f5;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 7px;
+}
+
+.btn {
+  width: 100%;
+  border-radius: 10px;
+  background-color: #7ac04e;
+  color: white;
+}
+
+.options {
+  text-align: center;
+}
+.options .not-send{
+  color: grey;
+  margin: 0;
+}
+
+.options .resend{
+  cursor: pointer;
+  color: #7ac04e;
+  margin: 0;
+}

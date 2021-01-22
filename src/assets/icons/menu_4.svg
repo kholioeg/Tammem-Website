@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="91.285" height="89.408" viewBox="0 0 91.285 89.408">
+  <defs>
+    <filter id="Path_131775" x="0" y="0" width="91.285" height="89.408" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#7ac04e" flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="menu_4" transform="translate(-142.556 -709.059)">
+    <g transform="matrix(1, 0, 0, 1, 142.56, 709.06)" filter="url(#Path_131775)">
+      <path id="Path_131775-2" data-name="Path 131775" d="M109.823,259.19V240.048a8.62,8.62,0,0,0-4.311-7.466l-16.577-9.571a8.623,8.623,0,0,0-8.621,0l-16.577,9.571a8.62,8.62,0,0,0-4.311,7.466V259.19a8.62,8.62,0,0,0,4.311,7.466l16.577,9.571a8.623,8.623,0,0,0,8.621,0l16.577-9.571A8.62,8.62,0,0,0,109.823,259.19Z" transform="translate(304.13 93.23) rotate(120)" fill="#7ac04e"/>
+    </g>
+    <text id="_" data-name="" transform="translate(188 759)" fill="#fff" font-size="20" font-family="FontAwesome5Pro-Regular, 'Font Awesome 5 Pro'"><tspan x="-6.25" y="0"></tspan></text>
+  </g>
+</svg>

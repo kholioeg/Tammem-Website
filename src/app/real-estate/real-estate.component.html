@@ -1,0 +1,100 @@
+<div *ngIf="router.url === '/home'">
+<div class="container2">
+  <h2 style="color: grey">{{ "categories" | translate }}</h2>
+
+  <div class="spacer"></div>
+  <div class="categories">
+    <div class="button_container">
+      <button mat-button [matMenuTriggerFor]="belowMenu">{{"all_categories" | translate}}
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+    </div>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </div>
+  <div class="regions">
+    <div class="button_container">
+      <button mat-button [matMenuTriggerFor]="belowMenu">{{"all_regions" | translate}}
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+    </div>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </div>
+  <div class="filter" (click) = "openFilterDialog()">
+    <div class="button_container">
+      <button mat-button>
+        <mat-icon>unfold_more</mat-icon>
+        {{"filter" | translate}}
+      </button>
+  </div>
+  </div>
+  <div class="toggle">
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle value="bold">Bold</mat-button-toggle>
+      <mat-button-toggle value="italic">Italic</mat-button-toggle>
+      <mat-button-toggle value="underline">Underline</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+<div class="container">
+  <div
+    class="card"
+    (click)="getDetails(campaign.id)"
+    *ngFor="
+      let campaign of campaigns
+        | paginate
+          : {
+              itemsPerPage: pageSize,
+              currentPage: page,
+              totalItems: count - 12
+            }
+    "
+  >
+    <img src="{{ campaign.images_urls[0] }}" alt="" />
+    <div class="content">
+      <div class="category">
+        <h2>{{ campaign.category_code }}</h2>
+        <span class="material-icons"> check_circle </span>
+        <div *ngIf="campaign.is_paid == true">
+          <p>مميز</p>
+          <span class="material-icons"> grade </span>
+        </div>
+      </div>
+      <div class="details">
+        <div>
+          <h3>{{ campaign.price }} رس</h3>
+        </div>
+
+        <div>
+          <span class="material-icons"> location_on </span>
+          <h5>{{ campaign.location_name }}</h5>
+        </div>
+        <div>
+          <span class="material-icons"> square_foot </span>
+          <h5>{{ campaign.area }} متر مربع</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<pagination-controls
+  previousLabel="السابق"
+  nextLabel="التالي"
+  responsive="true"
+  (pageChange)="handlePageChange($event)"
+>
+</pagination-controls>
+
+<div *ngIf="!campaigns" class="spinner-container">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>
+</div>
+
+<router-outlet *ngIf="router.url === '/home/map'"></router-outlet>
+

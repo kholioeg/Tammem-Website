@@ -1,0 +1,29 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.data{
+  width: 100%;
+  display: flex;
+  border-radius: 12px;
+  background-color: #1e4488;
+}
+
+.data__image{
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.data__text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.data__text h1 , .data__text h3{
+  margin: 0;
+}

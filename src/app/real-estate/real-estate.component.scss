@@ -1,0 +1,269 @@
+@import '../shared/scss/variables.scss';
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1920px;
+}
+
+.container2 {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+  max-width: 1920px;
+}
+
+.button_container{
+  background-color: white;
+  border: 1.5px solid $primary-blue;
+  border-radius: 10px;
+  display: flex;
+  margin: 0 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card {
+  background-color: white;
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.card img {
+  width: 100%;
+  height: 340px;
+  background-size: 100% 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.spinner-container {
+  display: flex;
+  align-items: center;
+}
+
+.spinner {
+  width: 50%;
+  margin: 20% auto;
+}
+.mat-card-image:first-child {
+  margin-top: 0;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.special {
+  display: inline-block;
+  background-color: #f8cb4e;
+  color: white;
+  width: 50px;
+  border-radius: 18px;
+}
+
+.footer {
+  width: 100%;
+  height: 70px;
+  display: flex;
+}
+
+.start {
+  flex: 2 2 150px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
+}
+
+.start_content {
+  width: 200px;
+  border-radius: 10px;
+  height: 80%;
+  border: 2px solid #1e4488;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer_active {
+  background-color: #1e4488;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.menu {
+  flex: 1 1 50%;
+}
+
+.map {
+  flex: 1 1 50%;
+}
+
+.mid {
+  display: flex;
+  flex: 5 5 auto;
+  cursor: pointer;
+}
+
+.round {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 2px grey;
+  margin: 10px;
+}
+
+.content {
+  margin: 10px;
+}
+
+.category {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.category h2 {
+  flex-basis: auto;
+  color: grey;
+  font-weight: bold;
+  margin: 0;
+}
+
+.category span {
+  flex-basis: 10%;
+  flex-grow: 1;
+  text-align: center;
+  text-align: right;
+  font-size: 14px;
+  color: #1e4488;
+}
+
+.category div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(235, 183, 40);
+  padding: 3px 7px;
+  border-radius: 10px;
+}
+
+.category div p,
+.category div span {
+  margin: 10px;
+  color: white;
+  font-weight: bold;
+  margin: 0;
+}
+
+.content h3 {
+  margin: 0;
+}
+
+.details div {
+  display: flex;
+  align-items: flex-start;
+}
+
+.details div span {
+  font-size: 16px;
+  color: grey;
+}
+.details div h5 {
+  font-size: 10px;
+  margin: 0;
+}
+
+.details div h3 {
+  font-size: 18px;
+  color: #1e4488;
+}
+
+:host ::ng-deep .ngx-pagination {
+  margin: 30px auto;
+  text-align: center;
+  width: 80%;
+  font-size: 30px;
+  // background-color: red;
+}
+
+:host ::ng-deep .pagination-next {
+  border: 1px solid #1e4488;
+  color: #1e4488;
+  background-color: white;
+}
+
+
+:host ::ng-deep .pagination-next a{
+  margin: 7px 10px;
+  color: #1e4488;
+}
+
+:host ::ng-deep .ngx-pagination .pagination-next a::after,
+:host ::ng-deep .ngx-pagination .pagination-previous.disabled::before,
+current.ngx-pagination .pagination-previous a::before{
+  display: none;
+}
+
+:host ::ng-deep  .ngx-pagination .current {
+  background-color: #1e4488;
+  padding: 10px;
+  margin: 15px;
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .card {
+    flex-basis: 41%;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1280px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .card {
+    flex-basis: 28%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .card {
+    flex-basis: 20%;
+  }
+
+  .card img {
+    height: 220px;
+  }
+}
+

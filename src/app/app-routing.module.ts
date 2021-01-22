@@ -1,10 +1,75 @@
+import { BudgetsComponent } from './budgets/budgets.component';
+import { SpecialOffersComponent } from './special-offers/special-offers.component';
+import { MapComponent } from './real-estate/map/map.component';
+import { ServicesComponent } from './services-component/services.component';
+import { AuthguardService } from './shared/guards/authguard.guard';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { DetailsComponent } from './real-estate/details/details.component';
+import { LoginComponent } from './shared/components/auth/login/login.component';
+import { EditComponent } from './real-estate/edit/edit.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddComponent } from './real-estate/add/add.component';
+import { RealEstateComponent } from './real-estate/real-estate.component';
+import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: 'home',
+    component: RealEstateComponent,
+    children: [
+      {
+        path: 'map',
+        component: MapComponent,
+      },
+    ]
+  },
+  {
+    path: 'realestate/add',
+    component: AddComponent,
+    canActivate: [AuthguardService],
+  },
+  {
+    path: 'edit-real-estate/:id',
+    component: EditComponent,
+    canActivate: [AuthguardService],
+  },
+  {
+    path: 'real-estate-details/:id',
+    component: DetailsComponent,
+    canActivate: [AuthguardService],
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
+    canActivate: [AuthguardService],
+  },
+  {
+    path: 'edit-profile',
+    component: EditProfileComponent,
+    canActivate: [AuthguardService],
+  },
+  {
+    path: 'services',
+    component: ServicesComponent,
+    canActivate: [AuthguardService],
+  },
+
+  {
+    path: 'special-offers',
+    component: SpecialOffersComponent,
+    canActivate: [AuthguardService],
+  },
+  {
+    path: 'budgets',
+    component: BudgetsComponent,
+    canActivate: [AuthguardService],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,0 +1,19 @@
+
+<input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+
+<agm-map
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  (mapClick)="mapClicked($event)">
+
+ <agm-marker
+
+      [latitude]="estatePosition.lat"
+      [longitude]="estatePosition.lng"
+      [label]="estatePosition.label"
+      [markerDraggable]="estatePosition.draggable"
+      >
+  </agm-marker>
+</agm-map>

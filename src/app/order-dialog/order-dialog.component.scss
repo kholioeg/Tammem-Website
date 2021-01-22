@@ -1,0 +1,38 @@
+@import '../shared/scss/variables.scss';
+
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 3px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 5px 0;
+  .icon_container{
+    width: 25px;
+    height: 25px;
+    background-color: $grey-background;
+    display: flex;
+    justify-content: center;
+    padding: 17px;
+    border-radius: 12px;
+    align-items: center;
+    margin: 0 10px;
+    mat-icon{
+      color: $primary-blue;
+    }
+  }
+
+  .blue{
+    background-color: $primary-blue;
+  }
+  
+  .title{
+    h3{
+      margin: 0;
+    }
+  }
+  .arrow{
+    color: $grey-item;
+  }
+}
