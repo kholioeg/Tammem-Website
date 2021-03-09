@@ -1,0 +1,37 @@
+.stepper__input {
+  width: 70px;
+  margin: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stepper__input .stepper-input-field {
+  color: #16489d;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0;
+  background: transparent;
+  user-select: none;
+  height: 25px;
+  line-height: 25px;
+  border: none;
+  text-align: center;
+  flex-grow: 1;
+  min-width: calc(100% - 25px - 14px);
+}
+
+.stepper__input button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  background-color: #16489d;
+  min-width: 25px;
+  height: 25px;
+  line-height: 25px;
+  color: #fff;
+  user-select: none;
+  border: none;
+}

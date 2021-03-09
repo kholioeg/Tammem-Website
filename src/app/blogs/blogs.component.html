@@ -1,0 +1,34 @@
+<div *ngIf="router.url === '/blogs'; then blogsTemp; else blog"></div>
+
+<ng-template #blogsTemp>
+  <div class="contain">
+    <div
+      class="card"
+      [routerLink]="['blog', blog.id]"
+      routerLinkActive="router-link-active"
+      *ngFor="let blog of blogs | paginate
+      : {
+          itemsPerPage: 12,
+          currentPage: page,
+          totalItems: blogs.length
+        }"
+    >
+      <img [src]="blog.image_url" alt="" />
+      <h3>{{ blog.title }}</h3>
+      <h5>{{ blog.date_time.toDate() | date: "20yy/M/d" }}</h5>
+    </div>
+  </div>
+
+  <pagination-controls
+  previousLabel="السابق"
+  nextLabel="التالي"
+  responsive="true"
+  (pageChange)="handlePageChange($event)"
+>
+</pagination-controls>
+
+</ng-template>
+
+<ng-template class="contain" #blog>
+  <router-outlet></router-outlet>
+</ng-template>

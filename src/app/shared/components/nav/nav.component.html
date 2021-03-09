@@ -1,11 +1,13 @@
 <mat-sidenav-container class="sidenav-container" [dir]="direction">
   <mat-sidenav
-    #drawer
+    #sidenav
     class="sidenav"
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
+    [class.menu-open] = "isMenuOpen"
+    [class.menu-close] = "!isMenuOpen"
   >
     <mat-toolbar class="sidenav-toolbar">
       <div class="toolbar_header">
@@ -49,6 +51,15 @@
             <span>
               <img src="../../../../assets/icons/copy.svg" alt="" />
             </span>
+            <a>{{ "my_profile" | translate }}</a>
+          </div>
+        </mat-list-item>
+
+        <mat-list-item role="listitem" routerLinkActive="active">
+          <div class="list-item" [routerLink]="['/orders']">
+            <span>
+              <img src="../../../../assets/icons/copy.svg" alt="" />
+            </span>
             <a>{{ "my_orders" | translate }}</a>
           </div>
         </mat-list-item>
@@ -63,7 +74,7 @@
         </mat-list-item>
 
         <mat-list-item role="listitem" routerLinkActive="active">
-          <div class="list-item" [routerLink]="['/blog']">
+          <div class="list-item" [routerLink]="['/blogs']">
             <span>
               <img src="../../../../assets/icons/report.svg" alt="" />
             </span>
@@ -105,7 +116,7 @@
             type="button"
             aria-label="Toggle sidenav"
             mat-icon-button
-            (click)="drawer.toggle()"
+            (click)="sidenav.toggle()"
           >
             <mat-icon
               aria-label="Side nav toggle icon"
@@ -175,6 +186,6 @@
     </mat-toolbar>
 
     <ng-content></ng-content>
-    <app-footer></app-footer>
+    <app-footer *ngIf="router.url === '/home'"></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

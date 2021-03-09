@@ -1,6 +1,6 @@
 import { RealEstate } from './../shared/models/RealEstate.model';
 import { DialogService } from './../shared/services/dialog.service';
-import { RealEstateService } from './../shared/services/real-estate.service';
+import { CampaignsService } from '../shared/services/campaigns.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class SpecialOffersComponent implements OnInit {
 
   constructor(
-    private realEstateService: RealEstateService,
+    private campaignService: CampaignsService,
     private dialogService: DialogService,
     private router: Router
   ) {}
@@ -21,7 +21,7 @@ export class SpecialOffersComponent implements OnInit {
   titles: string;
 
   ngOnInit(): void {
-    // this.realEstateService.getAllRealEstates().subscribe(
+    // this.campaignService.getAllRealEstates().subscribe(
     //   (data) => {
     //     this.realEstate = data.map((el) => {
     //       return {
@@ -62,7 +62,7 @@ export class SpecialOffersComponent implements OnInit {
       .afterClosed()
       .subscribe((res) => {
         if (res) {
-          this.realEstateService.deleteRealEstate(id);
+          this.campaignService.deleteRealEstate(id);
         }
       });
   }

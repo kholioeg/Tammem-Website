@@ -1,19 +1,20 @@
 
-<input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+<input placeholder="{{'search_location_on_map' | translate}}" class="location" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
 
 <agm-map
   [latitude]="lat"
   [longitude]="lng"
   [zoom]="zoom"
+  [styles]="styles"
   [disableDefaultUI]="false"
   (mapClick)="mapClicked($event)">
 
  <agm-marker
-
-      [latitude]="estatePosition.lat"
-      [longitude]="estatePosition.lng"
-      [label]="estatePosition.label"
-      [markerDraggable]="estatePosition.draggable"
+      [latitude]="campaignPosition.lat"
+      [longitude]="campaignPosition.lng"
+      [label]="campaignPosition.label"
+      [markerDraggable]="campaignPosition.draggable"
       >
+      <agm-info-window>Börk</agm-info-window>
   </agm-marker>
 </agm-map>

@@ -1,0 +1,38 @@
+<div class="header">
+  <h3>asd</h3>
+</div>
+
+<div class="contain">
+  <h3>{{"account_financial_move"| translate }}</h3>
+  <div class="options-container">
+    <mat-button-toggle-group #isPaid="matButtonToggleGroup" value="paid">
+      <mat-button-toggle class="special" value="paid">{{"paid" | translate}}</mat-button-toggle>
+      <mat-button-toggle class="normal" value="unpaid">{{"unpaid" | translate}}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+
+<div *ngIf="isPaid.value == 'paid'; then paid; else unpaid"></div>
+
+
+<ng-template #paid>
+  <div class="card-container">
+    <div class="card">
+      <div class="header">
+        <h3>{{"service_no" | translate}} #222</h3>
+        <h3>{{"since" | translate}}</h3>
+      </div>
+
+      <div style="text-align:center">
+        <h1>
+            ng-starrating demo
+        </h1>
+        <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false"></star-rating>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #unpaid>
+  <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false"></star-rating>
+
+</ng-template>

@@ -1,0 +1,12 @@
+<div class="contain">
+  <div>
+    <img [src]="blog?.image_url" alt="">
+  </div>
+
+  <div>
+    <h3>{{blog?.title}}</h3>
+    <h5>{{ blog?.date_time.toDate() | date: "20yy/M/d" }}</h5>
+    <h4>{{blog?.content}}</h4>
+  </div>
+
+</div>

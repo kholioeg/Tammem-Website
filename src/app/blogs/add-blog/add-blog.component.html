@@ -1,0 +1,64 @@
+<!-- blog form conatainer -->
+<div class="add_blog">
+  <!-- form to add a blog -->
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <!-- title -->
+    <h1>{{"add_blog" | translate}}</h1>
+
+    <!-- input for name -->
+    <div class="input_container">
+      <h3>{{"full_name" | translate}}</h3>
+      <input class="input" type="text" ngModel name="name" placeholder="{{'write_your_full_name' | translate}}">
+    </div>
+
+    <!-- input for phone number -->
+    <div class="input_container">
+      <h3>{{"phone_number" | translate}}</h3>
+      <input class="input" type="text" ngModel name="phone" placeholder="{{'write_your_phone_number' | translate}}">
+    </div>
+
+    <!-- input for image -->
+    <div class="input_container">
+      <label for="img" class="image_input">
+        <img src="" alt="">
+        <p>
+          {{"add_blog_image" | translate}}
+        </p>
+      </label>
+      <input type="file" id="img" ngModel name="image">
+    </div>
+
+    <!-- input for title -->
+    <div class="input_container">
+      <h3>{{"blog_title" | translate}}</h3>
+      <input class="input" type="text" ngModel name="title" placeholder="{{'write_blog_title' | translate}}">
+    </div>
+
+    <!-- input for category -->
+    <div class="category_input">
+      <h3>{{"blog_category" | translate}}</h3>
+      <div class="spacer"></div>
+
+      <select name="">
+        <option disabled value="">{{"not_assigned" | translate}}</option>
+        <option value="">option1</option>
+        <option value="">option1</option>
+        <option value="">option1</option>
+      </select>
+    </div>
+
+    <!-- input for content -->
+    <div class="input_container">
+      <h3>{{"blog_content" | translate}}</h3>
+      <textarea class="input_area" type="text" ngModel name="title" placeholder="{{'write_blog_content' | translate}}"> </textarea>
+    </div>
+
+    <!-- submit and cancel buttons -->
+    <div class="buttons">
+      <button class="submit" type="submit">{{"send" | translate}}</button>
+      <div class="spacer"></div>
+      <button class="cancel" >{{"cancel" | translate}}</button>
+    </div>
+
+  </form>
+</div>

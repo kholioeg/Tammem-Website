@@ -1,4 +1,4 @@
-import { RealEstateService } from 'src/app/shared/services/real-estate.service';
+import { CampaignsService } from 'src/app/shared/services/campaigns.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RealEstate } from 'src/app/shared/models/RealEstate.model';
@@ -18,17 +18,17 @@ export class DetailsComponent implements OnInit {
   realEstate: RealEstate;
   constructor(
     private route: ActivatedRoute,
-    private realEstateService: RealEstateService
+    private campaignService: CampaignsService
   ) {}
   currentImage: string;
   images: Array<any>;
   user: User;
   ngOnInit(): void {
     const id = this.route.snapshot.params.id;
-    this.realEstateService.getUser().subscribe((user) => {
+    this.campaignService.getUser().subscribe((user) => {
       this.user =  user;
     });
-    this.realEstateService.getRealEstate(id).subscribe(
+    this.campaignService.getRealEstate(id).subscribe(
       (data) => {
         this.realEstate = data;
         // this.currentImage = data.imagesUrls[0];

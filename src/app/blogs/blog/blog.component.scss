@@ -1,0 +1,21 @@
+@import '../../shared/scss/variables.scss';
+
+.contain{
+  display: grid;
+  grid-gap: 20px;
+  padding: 50px;
+  background-color: white;
+  grid-template-columns: 1fr 3fr;
+  div{
+    img{
+      width: 100%;
+      border-radius: 10px;
+    }
+    h3{
+      color: $primary-blue;
+    }
+    h4, h5, h3{
+      text-align: start;
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import {
   Component,
   EventEmitter,
@@ -28,15 +29,177 @@ export class LocationComponent implements OnInit {
 
   @ViewChild('placesRef') placesRef: GooglePlaceDirective;
 
+  styles = [
+    {
+      elementType: 'geometry',
+      stylers: [
+        {
+          color: '#f5f5f5',
+        },
+      ],
+    },
+    {
+      elementType: 'labels.icon',
+      stylers: [
+        {
+          visibility: 'off',
+        },
+      ],
+    },
+    {
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          color: '#616161',
+        },
+      ],
+    },
+    {
+      elementType: 'labels.text.stroke',
+      stylers: [
+        {
+          color: '#f5f5f5',
+        },
+      ],
+    },
+    {
+      featureType: 'administrative.land_parcel',
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          color: '#bdbdbd',
+        },
+      ],
+    },
+    {
+      featureType: 'poi',
+      elementType: 'geometry',
+      stylers: [
+        {
+          color: '#eeeeee',
+        },
+      ],
+    },
+    {
+      featureType: 'poi',
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          color: '#757575',
+        },
+      ],
+    },
+    {
+      featureType: 'poi.park',
+      elementType: 'geometry',
+      stylers: [
+        {
+          color: '#e5e5e5',
+        },
+      ],
+    },
+    {
+      featureType: 'poi.park',
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          color: '#9e9e9e',
+        },
+      ],
+    },
+    {
+      featureType: 'road',
+      elementType: 'geometry',
+      stylers: [
+        {
+          color: '#ffffff',
+        },
+      ],
+    },
+    {
+      featureType: 'road.arterial',
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          color: '#757575',
+        },
+      ],
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'geometry',
+      stylers: [
+        {
+          color: '#dadada',
+        },
+      ],
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          color: '#616161',
+        },
+      ],
+    },
+    {
+      featureType: 'road.local',
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          color: '#9e9e9e',
+        },
+      ],
+    },
+    {
+      featureType: 'transit.line',
+      elementType: 'geometry',
+      stylers: [
+        {
+          color: '#e5e5e5',
+        },
+      ],
+    },
+    {
+      featureType: 'transit.station',
+      elementType: 'geometry',
+      stylers: [
+        {
+          color: '#eeeeee',
+        },
+      ],
+    },
+    {
+      featureType: 'water',
+      elementType: 'geometry',
+      stylers: [
+        {
+          color: '#c9c9c9',
+        },
+      ],
+    },
+    {
+      featureType: 'water',
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          color: '#9e9e9e',
+        },
+      ],
+    },
+  ];
+
+
   options = {
     types: [],
     // componentRestrictions: { country: 'EG' },
   };
 
   newAddress = '';
-  zoom = 8;
+  zoom = 11;
   initialMarker: Marker;
-  estatePosition: Marker = {
+  campaignPosition: Marker = {
     lat: 0,
     lng: 0,
     address: '',
@@ -46,25 +209,27 @@ export class LocationComponent implements OnInit {
   lat: number;
   lng: number;
 
-  constructor() {}
+  constructor(public translate: TranslateService) {}
 
   ngOnInit(): void {
     if (navigator) {
       navigator.geolocation.getCurrentPosition((pos) => {
         this.lng = +pos.coords.longitude;
         this.lat = +pos.coords.latitude;
-        this.estatePosition = {
+        this.campaignPosition = {
           lat: this.lat,
           lng: this.lng,
           address: '',
           draggable: false,
         };
+        console.log(this.campaignPosition);
+
       });
     }
   }
 
   mapClicked(event): void {
-    this.estatePosition = {
+    this.campaignPosition = {
       lat: event.coords.lat,
       lng: event.coords.lng,
       draggable: false,
@@ -90,13 +255,13 @@ export class LocationComponent implements OnInit {
 
     this.lat = address.geometry.location.lat();
     this.lng = address.geometry.location.lng();
-    this.estatePosition = {
+    this.campaignPosition = {
       lat: address.geometry.location.lat(),
       lng: address.geometry.location.lng(),
       address: this.newAddress,
       draggable: false,
     };
     this.zoom = 14;
-    this.position.emit(this.estatePosition);
+    this.position.emit(this.campaignPosition);
   }
 }

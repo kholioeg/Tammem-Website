@@ -1,13 +1,176 @@
-<div class="container">
-  <div class="data">
-    <img class="data__image" src="{{ user?.user_image }}" alt="" />
-    <div class="data__text">
-      <h1>{{ user?.full_name }}</h1>
-      <h3>مكتب عقاري</h3>
+
+<div class="user_image">
+  <img [src]="user?.user_image" alt="">
+  <div>
+    <h3>{{user?.full_name}}</h3>
+    <div>
+      <h3>{{user?.full_name}}</h3>
+    </div>
+  </div>
+</div>
+
+<div class="info">
+  <h3>{{"info" | translate}}</h3>
+  <div class="items">
+
+    <div class="contain">
+      <div class="item">
+        <img  src="../../assets/icons/alert2.svg" alt="">
+      </div>
+      <h3>{{"my_ads" | translate}}</h3>
+    </div>
+
+    <div class="contain">
+      <div class="item">
+        <img  src="../../assets/icons/group.svg" alt="">
+      </div>
+      <h3>{{"my_customers" | translate}}</h3>
+    </div>
+
+    <div class="contain">
+      <div class="item">
+        <img  src="../../assets/icons/heart.svg" alt="">
+      </div>
+      <h3>{{"my_favourites" | translate}}</h3>
+    </div>
+
+    <div class="contain">
+      <div class="item">
+        <img  src="../../assets/icons/user_2.svg" alt="">
+      </div>
+      <h3>{{"my_info" | translate}}</h3>
+    </div>
+
+    <div class="contain">
+      <div class="item">
+        <img  src="../../assets/icons/cards.svg" alt="">
+      </div>
+      <h3>{{"my_cards" | translate}}</h3>
+    </div>
+
+    <div class="contain">
+      <div class="item" [routerLink]="['financial-movement']">
+        <img  src="../../assets/icons/financial.svg" alt="">
+      </div>
+      <h3>{{"financial_movement" | translate}}</h3>
     </div>
   </div>
 
-  <div class="info">
+</div>
+
+
+<div class="details">
+  <h3>{{"details" | translate}}</h3>
+  <div class="items">
+
+    <div class="contain">
+      <div class="item">
+        <img  src="../../assets/icons/money2.svg" alt="">
+      </div>
+      <h3>{{"ads_fees" | translate}}</h3>
+    </div>
+
+    <div class="contain">
+      <div class="item">
+        <img  src="../../assets/icons/ad_with_us.svg" alt="">
+      </div>
+      <h3>{{"advertise_with_us" | translate}}</h3>
+    </div>
+
+    <div class="contain">
+      <div class="item">
+        <img  src="../../assets/icons/report2.svg" alt="">
+      </div>
+      <h3>{{"tammem_blog" | translate}}</h3>
+    </div>
+
+    <div class="contain">
+      <div class="item">
+        <img  src="../../assets/icons/settings.svg" alt="">
+      </div>
+      <h3>{{"settings" | translate}}</h3>
+    </div>
 
   </div>
 </div>
+
+
+<div class="about">
+  <h3>{{"about_tammem" | translate}}</h3>
+
+  <div class="about_contain">
+    <div class="icon_contain">
+      <img  src="../../assets/icons/alert_3.svg" alt="">
+    </div>
+    <div class="text">
+      <h3>{{"services_guide" | translate}}</h3>
+    </div>
+    <div class="spacer"></div>
+    <div class="arrow">
+      <mat-icon *ngIf="direction === 'rtl'">keyboard_arrow_left</mat-icon>
+      <mat-icon *ngIf="direction === 'ltr'">keyboard_arrow_right</mat-icon>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="about_contain">
+    <div class="icon_contain">
+      <img  src="../../assets/icons/providera.svg" alt="">
+    </div>
+    <div class="text">
+      <h3>{{"join_as_provider" | translate}}</h3>
+    </div>
+    <div class="spacer"></div>
+    <div class="arrow">
+      <mat-icon *ngIf="direction === 'rtl'">keyboard_arrow_left</mat-icon>
+      <mat-icon *ngIf="direction === 'ltr'">keyboard_arrow_right</mat-icon>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="about_contain">
+    <div class="icon_contain">
+      <img  src="../../assets/icons/common.svg" alt="">
+    </div>
+    <div class="text">
+      <h3>{{"common_questions" | translate}}</h3>
+    </div>
+    <div class="spacer"></div>
+    <div class="arrow">
+      <mat-icon *ngIf="direction === 'rtl'">keyboard_arrow_left</mat-icon>
+      <mat-icon *ngIf="direction === 'ltr'">keyboard_arrow_right</mat-icon>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="about_contain">
+    <div class="icon_contain">
+      <img  src="../../assets/icons/contact.svg" alt="">
+    </div>
+    <div class="text">
+      <h3>{{"contact_us" | translate}}</h3>
+    </div>
+    <div class="spacer"></div>
+    <div class="arrow">
+      <mat-icon *ngIf="direction === 'rtl'">keyboard_arrow_left</mat-icon>
+      <mat-icon *ngIf="direction === 'ltr'">keyboard_arrow_right</mat-icon>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="about_contain">
+    <div class="icon_contain">
+      <img  src="../../assets/icons/notice.svg" alt="">
+    </div>
+    <div class="text">
+      <h3>{{"about_us" | translate}}</h3>
+    </div>
+    <div class="spacer"></div>
+    <div class="arrow">
+      <mat-icon *ngIf="direction === 'rtl'">keyboard_arrow_left</mat-icon>
+      <mat-icon *ngIf="direction === 'ltr'">keyboard_arrow_right</mat-icon>
+    </div>
+  </div>
+</div>
+
+<app-privacy-policy></app-privacy-policy>

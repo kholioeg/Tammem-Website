@@ -13,6 +13,7 @@ interface Marker {
 
 @Component({
   templateUrl: './map.component.html',
+  selector: 'app-map',
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit {
@@ -178,11 +179,10 @@ export class MapComponent implements OnInit {
     },
   ];
 
-  newAddress = '';
   zoom = 15;
   initialMarker: Marker;
 
-  estatePosition: Marker = {
+  campaignPosition: Marker = {
     lat: 0,
     lng: 0,
     address: '',
@@ -194,54 +194,45 @@ export class MapComponent implements OnInit {
   lat: number;
   lng: number;
 
-  paths: any;
-
-  constructor(private mapServive: MapService) {}
-
-  polygon = new google.maps.Polygon({});
+  constructor(private mapService: MapService) {}
 
   ngOnInit(): void {
-    this.mapServive.getRegions().subscribe((data) => {
-      this.paths = data.boundaries;
-    });
-
     if (navigator) {
       navigator.geolocation.getCurrentPosition((pos) => {
         this.lng = +pos.coords.longitude;
         this.lat = +pos.coords.latitude;
-        this.estatePosition = {
+        this.campaignPosition = {
           lat: this.lat,
           lng: this.lng,
           address: '',
           draggable: false,
         };
 
-        this.markers.push(this.estatePosition);
+        this.markers.push(this.campaignPosition);
 
-        this.mapServive.getPoints().subscribe((data) => {
-          const myLocation = new google.maps.LatLng(this.lat, this.lng);
-          for (const item of data) {
-            const loc2 = new google.maps.LatLng(item.point.l_, item.point.__);
-            const distance = google.maps.geometry.spherical.computeDistanceBetween(
-              myLocation,
-              loc2
-            );
+        // this.mapService.getPoints().subscribe((data) => {
+        //   const myLocation = new google.maps.LatLng(this.lat, this.lng);
+        //   for (const item of data) {
+        //     const loc2 = new google.maps.LatLng(item.point.l_, item.point.__);
+        //     const distance = google.maps.geometry.spherical.computeDistanceBetween(
+        //       myLocation,
+        //       loc2
+        //     );
 
-            console.log(distance);
+        //     console.log(distance);
 
-            if (distance <= 20000) {
-              const point = {
-                lat: item.point.l_,
-                lng: item.point.__,
-                address: '',
-                draggable: false,
-              };
-              this.markers.push(point);
-            }
-          }
-        });
+        //     if (distance <= 20000) {
+        //       const point = {
+        //         lat: item.point.l_,
+        //         lng: item.point.__,
+        //         address: '',
+        //         draggable: false,
+        //       };
+        //       this.markers.push(point);
+        //     }
+        //   }
+        // });
 
-        // console.log(distance / 1000);
       });
     }
   }
@@ -252,7 +243,7 @@ export class MapComponent implements OnInit {
 
   circleAdded(e): void {
     // if (e.getBounds().contains(new google.maps.LatLng(this.lat, this.lng))){
-    this.mapServive.getBounds(e).subscribe((map) => {
+    this.mapService.getBounds(e).subscribe((map) => {
       // console.log(map);
     });
     // }

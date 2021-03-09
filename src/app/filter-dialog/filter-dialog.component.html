@@ -1,1 +1,82 @@
-<p>filter-dialog !</p>
+<form #form = "ngForm">
+
+  <div class="container" [dir]="direction">
+  <h3>{{ "filter_title" | translate }}</h3>
+
+  <div class="row">
+
+      <mat-label class="label" >{{ "filter_ad_categories_type" | translate }}</mat-label>
+      <mat-select name= "category"  [(ngModel)]="selected" placeholder="{{ 'filter_ad_categories_type_hint' | translate }}">
+          <mat-option *ngFor="let category of categories" [value]="category.code">{{category.name}}</mat-option>
+      </mat-select>
+
+  </div>
+
+  <div class="options-row">
+    <h3>{{ "filter_ad_type" | translate }}</h3>
+    <div class="options-container">
+      <mat-button-toggle-group [(ngModel)]="type" name="type" aria-label="Font Style">
+        <mat-button-toggle class="special" value="special">{{"special_in_filter" | translate}}</mat-button-toggle>
+        <mat-button-toggle class="normal" value="normal">{{"normal_in_filter" | translate}}</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
+
+  <div class="options-row">
+    <h3>{{ "filter_area" | translate }}</h3>
+    <div class="options-container">
+      <input type="text" name="min_area" ngModel placeholder="{{'filter_area_min' | translate}}">
+      <input type="text" name="max_area" ngModel placeholder="{{'filter_area_max' | translate}}">
+    </div>
+  </div>
+
+  <div class="options-row">
+    <h3>{{ "filter_price" | translate }}</h3>
+    <div class="options-container">
+      <input type="text" name = "min_price" ngModel placeholder="{{'filter_price_min' | translate}}">
+      <input type="text" name = "max_price" ngModel placeholder="{{'filter_price_max' | translate}}">
+    </div>
+  </div>
+
+  <div class="options-row">
+    <h3>{{ "filter_rent_type" | translate }}</h3>
+    <div class="options-container">
+      <mat-button-toggle-group name="rent_type" [(ngModel)]="rentalType" aria-label="Font Style">
+        <mat-button-toggle class="choose" value="monthly">{{"filter_rent_type_monthly" | translate}}</mat-button-toggle>
+        <mat-button-toggle class="choose" value="yearly">{{"filter_rent_type_annual" | translate}}</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
+
+  <div class="options-row">
+    <h3>{{ "filter_ownership" | translate }}</h3>
+    <div class="options-container">
+      <mat-button-toggle-group name="ownership" [(ngModel)]="ownerShip" aria-label="Font Style">
+        <mat-button-toggle class="choose" value="owner">{{"filter_ownership_owner" | translate}}</mat-button-toggle>
+        <mat-button-toggle class="choose" value="intermediary">{{"filter_ownership_intermediary" | translate}}</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
+
+  <div class="options-row">
+    <h3>{{ "filter_date" | translate }}</h3>
+
+    <div class="dates">
+      <div (click)="from.open()" class="date" appearance="fill">
+        <input name = "date_from" ngModel [matDatepicker]="from" placeholder="{{'filter_date_from' | translate}}">
+        <mat-datepicker #from disabled="false"></mat-datepicker>
+      </div>
+
+      <div (click)="to.open()" class="date" appearance="fill">
+        <input name = "date_to" ngModel [matDatepicker]="to" placeholder="{{'filter_date_to' | translate}}">
+        <mat-datepicker #to disabled="false"></mat-datepicker>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="submit" (click)="submit(form)">
+    <h3>{{"filter_apply" | translate }} {{"filter_apply_count_1" | translate}}</h3>
+  </div>
+</div>
+</form>

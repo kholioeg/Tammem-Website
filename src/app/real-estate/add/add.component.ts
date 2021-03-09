@@ -1,7 +1,7 @@
 import { AuthService } from './../../shared/services/auth.service';
 import { OptionsService } from './../../shared/services/options.service';
 import { Component, OnInit } from '@angular/core';
-import { RealEstateService } from 'src/app/shared/services/real-estate.service';
+import { CampaignsService } from 'src/app/shared/services/campaigns.service';
 
 @Component({
   selector: 'app-add',
@@ -11,7 +11,7 @@ import { RealEstateService } from 'src/app/shared/services/real-estate.service';
 export class AddComponent implements OnInit {
   options = new Set([]);
   optionsFromService: string[];
-  form = this.realEstateService.form;
+  form = this.campaignService.form;
   imagesFiles: any[] = [];
 
   userId;
@@ -19,7 +19,7 @@ export class AddComponent implements OnInit {
   optionsArray = [];
   urls = [];
   constructor(
-    private realEstateService: RealEstateService,
+    private campaignService: CampaignsService,
     private optionsService: OptionsService,
     private authService: AuthService
   ) {}
@@ -60,7 +60,7 @@ export class AddComponent implements OnInit {
         building_age: form.value.building_age
       },
     };
-    this.realEstateService.addNewRealEstate(record, this.imagesFiles);
+    this.campaignService.addNewRealEstate(record, this.imagesFiles);
     form.reset();
   }
 

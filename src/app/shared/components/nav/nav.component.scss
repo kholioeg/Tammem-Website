@@ -9,6 +9,15 @@
   background-color: $primary-blue;
 }
 
+.sidenav.menu-close{
+  width: 70px;
+
+}
+
+.sidenav.menu-open{
+  width: 300px;
+}
+
 .sidenav .mat-toolbar {
   background: inherit;
 }

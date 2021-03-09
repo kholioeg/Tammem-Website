@@ -6,9 +6,10 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { RealEstateService } from 'src/app/shared/services/real-estate.service';
+import { CampaignsService } from 'src/app/shared/services/campaigns.service';
 import { ActivatedRoute } from '@angular/router';
 import { RealEstate } from 'src/app/shared/models/RealEstate.model';
+import { Campaign } from 'src/app/shared/models/campaign.model';
 
 @Component({
   selector: 'app-edit',
@@ -19,7 +20,7 @@ export class EditComponent implements OnInit, AfterViewInit {
   options = new Set([]);
   realEstateFromServer: RealEstate;
   optionsFromService: string[];
-  form = this.realEstateService.form;
+  form = this.campaignService.form;
   imagesFiles: any[] = [];
   id: string;
   urls = [];
@@ -27,14 +28,14 @@ export class EditComponent implements OnInit, AfterViewInit {
 
   @ViewChild('options') optionFromTemplate: ElementRef;
   constructor(
-    private realEstateService: RealEstateService,
+    private campaignService: CampaignsService,
     private optionsService: OptionsService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
-    this.realEstateService.getRealEstate(this.id).subscribe(
+    this.campaignService.getRealEstate(this.id).subscribe(
       async (data) => {
         this.realEstateFromServer = await data;
         this.form.setValue({
@@ -76,7 +77,7 @@ export class EditComponent implements OnInit, AfterViewInit {
 
   onSubmit(): void {
     this.form.value.imagesUrls = this.urls;
-    this.realEstateService.updateRealEstate(this.form.value, this.id);
+    this.campaignService.updateRealEstate(this.form.value, this.id);
   }
 
   pushOptions(event, option): void {

@@ -60,15 +60,27 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MatSelectModule } from '@angular/material/select';
-import { BDirModule } from 'ngx-bdir';
 import { MatMenuModule } from '@angular/material/menu';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { OrderDialogComponent } from './order-dialog/order-dialog.component';
-import { MatRippleModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
+import { BlogsComponent } from './blogs/blogs.component';
+import { BlogComponent } from './blogs/blog/blog.component';
+import { AddBlogComponent } from './blogs/add-blog/add-blog.component';
+import { PrivacyPolicyComponent } from './shared/components/privacy-policy/privacy-policy.component';
+import { AddCampaignComponent } from './real-estate/add-campaign/add-campaign.component';
+import { PlusMinusComponent } from './shared/components/plus-minus/plus-minus.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FinancialMovementComponent } from './user-profile/financial-movement/financial-movement.component';
+import { RatingModule } from 'ng-starrating';
+
+
+
 
 @NgModule({
   declarations: [
@@ -96,6 +108,13 @@ import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
     FooterComponent,
     OrderDialogComponent,
     FilterDialogComponent,
+    BlogsComponent,
+    BlogComponent,
+    AddBlogComponent,
+    PrivacyPolicyComponent,
+    AddCampaignComponent,
+    PlusMinusComponent,
+    FinancialMovementComponent,
   ],
   imports: [
     BrowserModule,
@@ -119,6 +138,8 @@ import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
     MatRadioModule,
     MatCheckboxModule,
     AngularFireStorageModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA6ZMuE-Ic86oL-7FclodGcmYEve8L5Muk',
       libraries: ['geometry', 'drawing'],
@@ -138,11 +159,11 @@ import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
     NgOtpInputModule,
     HttpClientModule,
     MatSelectModule,
-    BDirModule,
     MatMenuModule,
     MatButtonToggleModule,
     MatRippleModule,
     MatDividerModule,
+    MatSlideToggleModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -150,6 +171,7 @@ import { FilterDialogComponent } from './filter-dialog/filter-dialog.component';
         deps: [HttpClient],
       },
     }),
+    RatingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

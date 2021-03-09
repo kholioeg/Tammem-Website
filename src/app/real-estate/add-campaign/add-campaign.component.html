@@ -1,0 +1,369 @@
+<form (ngSubmit)="addCampaign(form)" #form="ngForm">
+  <div *ngIf="step == 5">
+    <header>
+      <h5>ttt</h5>
+    </header>
+
+    <div class="contain">
+      <h3>{{ "campaign_conditions" | translate }}</h3>
+      <h4>{{ "campaign_conditions_1" | translate }}</h4>
+      <h4>{{ "campaign_conditions_2" | translate }}</h4>
+      <h4>{{ "campaign_conditions_3" | translate }}</h4>
+      <h4>{{ "campaign_conditions_4" | translate }}</h4>
+      <h4>{{ "campaign_conditions_5" | translate }}</h4>
+      <h4>{{ "campaign_conditions_6" | translate }}</h4>
+
+      <h5>{{ "campaign_conditions_note" | translate }}</h5>
+    </div>
+
+    <div class="buttons_container">
+      <div class="buttons">
+        <button class="accept" (click)="next()">
+          {{ "accept" | translate }}
+        </button>
+        <div class="spacer"></div>
+        <button class="cancel" (click)="cancel()">
+          {{ "cancel" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="step2" *ngIf="step == 2">
+    <header>
+      <h5>ttt</h5>
+    </header>
+
+    <h3>{{ "campaign_type" | translate }}</h3>
+    <div class="categories">
+      <mat-button-toggle-group
+        name="fontStyle"
+        aria-label="Font Style"
+        #group="matButtonToggleGroup"
+        value="all"
+      >
+        <mat-button-toggle
+          value="all"
+          selected
+          (click)="getCategories('all')"
+          >{{ "all" | translate }}</mat-button-toggle
+        >
+        <mat-button-toggle value="sale" (click)="getCategories('sale')">{{
+          "sale" | translate
+        }}</mat-button-toggle>
+        <mat-button-toggle value="rent" (click)="getCategories('rent')">{{
+          "rent" | translate
+        }}</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="choose_category">
+      <!-- category group if language is arabic -->
+      <mat-button-toggle-group
+        name="fontStyle"
+        aria-label="Font Style"
+        *ngIf="direction == 'rtl'"
+        #arGroup="matButtonToggleGroup"
+        name="category"
+        ngModel
+        style="display: flex"
+      >
+        <mat-button-toggle
+          required
+          *ngFor="let item of categories"
+          value="{{ item.name }}"
+        >
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            "
+          >
+            <h3 style="display: inline-block">{{ item.name }}</h3>
+            <mat-icon style="color: white">check_circle</mat-icon>
+          </div>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <!-- category group if language is english -->
+      <mat-button-toggle-group
+        name="fontStyle"
+        aria-label="Font Style"
+        *ngIf="direction == 'ltr'"
+      >
+        <mat-button-toggle
+          style="display: flex"
+          required
+          *ngFor="let item of categories"
+          value="{{ item.name }}"
+          >{{ item.name_en }}</mat-button-toggle
+        >
+      </mat-button-toggle-group>
+    </div>
+
+    <div class="buttons_container" style="width: 100%">
+      <div class="buttons" style="width: 100%">
+        <button
+          [ngClass]="{ dimmed: form.value.category == '' }"
+          [disabled]="form.value.category == ''"
+          class="accept"
+          (click)="next()"
+        >
+          {{ "next" | translate }}
+        </button>
+        <div class="spacer"></div>
+        <button class="cancel" (click)="cancel()">
+          {{ "cancel" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="step3" *ngIf="step == 3">
+    <header>
+      <h5>ttt</h5>
+    </header>
+
+    <h3>{{ "campaign_conditions" | translate }}</h3>
+
+    <div class="contain">
+      <h3>{{ "campaign_price_option_1" | translate }}</h3>
+      <hr />
+      <div class="line">
+        <h3>{{ "rental_fees" | translate }}</h3>
+        <h5>
+          120 <span>{{ "rial" | translate }}</span>
+        </h5>
+      </div>
+
+      <div class="line">
+        <h3>{{ "sell_fees" | translate }}</h3>
+        <h5>
+          950 <span>{{ "rial" | translate }}</span>
+        </h5>
+      </div>
+    </div>
+
+    <div class="contain">
+      <h3>{{ "campaign_price_option_2" | translate }}</h3>
+      <hr />
+      <div class="line">
+        <h3>{{ "annual_subscription" | translate }}</h3>
+        <h5 style="color: #7ac04e">
+          1500 <span>{{ "rial" | translate }}</span>
+        </h5>
+      </div>
+
+      <div class="line">
+        <h3 style="width: 100%">
+          {{ "campaign_price_option_2_description_1" | translate }}
+        </h3>
+      </div>
+      <hr />
+
+      <div class="line">
+        <h3>{{ "professional_subscription" | translate }}</h3>
+        <h5 style="color: #7ac04e">
+          3800 <span>{{ "rial" | translate }}</span>
+        </h5>
+      </div>
+
+      <div class="line">
+        <h3 style="width: 100%">
+          {{ "campaign_price_option_2_description_2" | translate }}
+        </h3>
+      </div>
+      <hr />
+
+      <div class="line">
+        <h3>{{ "premium_subscription" | translate }}</h3>
+        <h5 style="color: #7ac04e">
+          5000 <span>{{ "rial" | translate }}</span>
+        </h5>
+      </div>
+
+      <div class="line">
+        <h3 style="width: 100%">
+          {{ "campaign_price_option_2_description_3" | translate }}
+        </h3>
+      </div>
+
+      <hr />
+
+      <div class="line">
+        <h3 style="width: 100%">
+          {{ "know_more_about_prices" | translate }}
+        </h3>
+      </div>
+    </div>
+
+    <div class="contain">
+      <h3>{{ "marketing_sol" | translate }}</h3>
+      <hr />
+      <div class="line">
+        <h3 style="width: 100%">
+          {{ "contact_through_email" | translate }}
+          <span style="color: #7ac04e">sales@tamm.sa</span>
+        </h3>
+      </div>
+    </div>
+
+    <div class="contain">
+      <h3>{{ "new_service_order_details_points" | translate }}</h3>
+      <hr />
+      <div class="line">
+        <h3 style="width: 100%">
+          {{ "owner_screen_view_ponits1" | translate }}
+        </h3>
+      </div>
+
+      <div class="line">
+        <h3 style="width: 100%">
+          {{ "new_campaign_explanatory_points_2" | translate }}
+        </h3>
+      </div>
+
+      <div class="line">
+        <h3 style="width: 100%">
+          {{ "owner_screen_view_ponits2" | translate }}
+        </h3>
+      </div>
+    </div>
+
+    <div class="buttons_container">
+      <div class="buttons">
+        <button class="accept" (click)="next()">
+          {{ "pay_fees_promising" | translate }}
+        </button>
+        <div class="spacer"></div>
+        <button class="cancel" (click)="cancel()">
+          {{ "cancel" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="step4" *ngIf="step == 4">
+    <header>
+      <h5>ttt</h5>
+    </header>
+
+    <h3>{{ "building_details" | translate }}</h3>
+
+    <div class="row" *ngFor="let item of items">
+      <h3>{{ item.name | translate }}</h3>
+
+      <div class="stepper-input stepper__input">
+        <button class="toggle-more" (click)="item.value = item.value + 1">
+          +
+        </button>
+
+        <div class="stepper-input-field">
+          <p style="display: inline-block" *ngIf="item.name !== 'building_age'">
+            {{ item.value }}
+          </p>
+          <p style="display: inline-block" *ngIf="item.name == 'street_wide'">
+            {{ item.text | translate }}
+          </p>
+          <p
+            style="display: inline-block"
+            *ngIf="item.name == 'building_age' && item.value == 0"
+          >
+            {{ item.text | translate }}
+          </p>
+          <p
+            style="display: inline-block"
+            *ngIf="item.name == 'building_age' && item.value > 0"
+          >
+            {{ item.value }}
+          </p>
+        </div>
+
+        <button
+          class="toggle-less"
+          (click)="item.value - 1 >= 0 ? (item.value = item.value - 1) : ''"
+        >
+          -
+        </button>
+      </div>
+    </div>
+
+    <div class="row" *ngFor="let item of boolItems">
+      <h3>{{ item.name | translate }}</h3>
+      <mat-slide-toggle (change)="item.value = !item.value"></mat-slide-toggle>
+    </div>
+
+    <div class="row_text">
+      <h3>{{ "other_features" | translate }}</h3>
+      <input
+        type="text"
+        name="other_features"
+        ngModel
+        placeholder="{{ 'type_here_other_features' | translate }}"
+      />
+    </div>
+
+    <div class="buttons_container">
+      <div class="buttons">
+        <button class="accept" (click)="next()">
+          {{ "next" | translate }}
+        </button>
+        <div class="spacer"></div>
+        <button class="cancel" (click)="cancel()">
+          {{ "cancel" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="step5" *ngIf="step == 1">
+    <app-location></app-location>
+    <div class="buttons">
+
+      <span class="material-icons location">
+        location_on
+      </span>
+
+      <button class="select-location-button" (click)="next()">
+        {{ "select_building_location" | translate }}
+      </button>
+
+      <span class="material-icons location map">
+        public
+      </span>
+
+    </div>
+  </div>
+
+  <div class="step6" *ngIf="step == 6">
+    <header>
+      <h5>ttt</h5>
+    </header>
+
+    <h3>{{ "building_photos" | translate }}</h3>
+
+    <div class="row">
+      <label for="img">
+        <h5>icon</h5>
+        <h3>{{ "click_here_to_upload_files" | translate }}</h3>
+        <h5>{{ "building_photos_desc" | translate }}</h5>
+      </label>
+      <input type="file" id="img" multiple (change)="selectImages($event)" />
+    </div>
+
+    <div class="images">
+      <div *ngFor="let image of previewImages; let i = index">
+        <img [src]="image" alt="" />
+        <div (click)="remove(i, 'image')" class="remove">X</div>
+      </div>
+
+      <div *ngFor="let video of previewVideos; let i = index">
+        <video controls [src]="video" alt=""></video>
+        <div (click)="remove(i, 'video')" class="remove">X</div>
+      </div>
+    </div>
+  </div>
+  <!-- copyrights footer component -->
+  <app-privacy-policy *ngIf="step != 1"></app-privacy-policy>
+</form>

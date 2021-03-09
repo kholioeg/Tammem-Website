@@ -29,6 +29,7 @@
     "@ngmodule/material-carousel": "^0.6.0",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "algoliasearch": "^4.8.5",
     "angular-google-maps": "^2.4.1",
     "angular2-recaptcha": "^1.1.0",
     "bootstrap": "4.1.1",
@@ -38,6 +39,7 @@
     "lodash": "^4.17.20",
     "ng-image-slider": "^2.6.4",
     "ng-otp-input": "^1.7.1",
+    "ng-starrating": "^1.0.20",
     "ng2-carouselamos": "^4.1.0",
     "ngx-bootstrap": "^6.2.0",
     "ngx-captcha": "^8.0.1",
@@ -45,6 +47,7 @@
     "ngx-intl-tel-input": "^3.0.5",
     "ngx-owl-carousel": "^2.0.7",
     "ngx-pagination": "^5.0.0",
+    "ngx-rating": "0.0.9",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

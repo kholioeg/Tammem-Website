@@ -1,13 +1,12 @@
+import { first } from 'rxjs/operators';
 import { DialogService } from './../shared/services/dialog.service';
-import { RealEstateService } from 'src/app/shared/services/real-estate.service';
+import { CampaignsService } from 'src/app/shared/services/campaigns.service';
 import { Component, OnInit } from '@angular/core';
 import { RealEstate } from '../shared/models/RealEstate.model';
 import { registerLocaleData } from '@angular/common';
 import localeAr from '@angular/common/locales/ar-EG';
 import { Router } from '@angular/router';
-import { publish } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
-
 registerLocaleData(localeAr);
 
 @Component({
@@ -17,7 +16,7 @@ registerLocaleData(localeAr);
 })
 export class RealEstateComponent implements OnInit {
   constructor(
-    private realEstateService: RealEstateService,
+    private campaignService: CampaignsService,
     private dialogService: DialogService,
     public router: Router,
     public translate: TranslateService,
@@ -25,18 +24,29 @@ export class RealEstateComponent implements OnInit {
   ) {}
 
   campaigns: any[];
+  direction = localStorage.getItem('direction');
+  categories: Array<any>;
+  category: any;
   titles: string;
   pageSize = 12;
   page: number;
   count: number;
+  regions: Array<object>;
+  region: any;
 
   ngOnInit(): void {
-    console.log(this.router.url);
+    this.campaignService.getFirstPage().subscribe((listings) => {
+      console.log(listings);
 
-    this.realEstateService.getFirstPage().subscribe((listings) => {
       this.campaigns = listings.hits;
       this.count = listings.nbHits;
-      console.log(this.count);
+    });
+    this.campaignService.getAllCategories().pipe(first()).subscribe((categories) => {
+      this.categories = categories;
+    });
+
+    this.campaignService.getAllRegions().pipe(first()).subscribe(regions => {
+      this.regions = regions;
     });
   }
 
@@ -65,7 +75,7 @@ export class RealEstateComponent implements OnInit {
       .afterClosed()
       .subscribe((res) => {
         if (res) {
-          this.realEstateService.deleteRealEstate(id);
+          this.campaignService.deleteRealEstate(id);
         }
       });
   }
@@ -75,16 +85,59 @@ export class RealEstateComponent implements OnInit {
   }
 
   handlePageChange(event): any {
-    this.realEstateService.getPage(event).subscribe((listings) => {
-      console.log(listings.hits);
+    if (!this.region && !this.category){
+      console.log('aaaalllllll');
 
-      this.campaigns = listings.hits;
-      this.page = listings.page;
-      console.log(this.page);
-    });
+      this.campaignService.getPage(event).subscribe((listings) => {
+        this.campaigns = listings.hits;
+        this.page = listings.page;
+      });
+    } else if (this.region){
+      console.log('regioon');
+
+      this.campaignService
+      .getCampaignsByRegion(this.region.name_en, event)
+      .then((result) => {
+        this.campaigns = result.hits;
+        // this.count = result.nbHits;
+        this.page = event;
+      });
+    } else if (this.category){
+      console.log('caaaaaaaaaaat');
+
+      this.campaignService
+      .getCampaignsByCategory(this.category.code, event)
+      .then((result) => {
+        this.campaigns = result.hits;
+        // this.count = result.nbHits;
+        this.page = event;
+      });
+    }
+
   }
+
   openFilterDialog(): void {
     this.dialog.openConfirmDialog('FilterDialogComponent');
   }
 
+  selectCategory(category): void {
+    this.category = category;
+    this.campaignService
+      .getCampaignsByCategory(category.code, 1)
+      .then((result) => {
+        this.campaigns = result.hits;
+        this.count = result.nbHits;
+      });
+  }
+
+  selectRegion(region): void{
+    this.region = region;
+    this.campaignService
+    .getCampaignsByRegion(region.name_en, 1)
+    .then((result) => {
+      console.log(result);
+      this.campaigns = result.hits;
+      this.count = result.nbHits;
+    });
+  }
 }

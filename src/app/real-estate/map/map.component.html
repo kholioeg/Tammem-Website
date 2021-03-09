@@ -4,6 +4,7 @@
   [drawingMode]="'circle'"
   [circleOptions]="{ fillColor: 'red', radius: 150 }"
 ></agm-drawing-manager>
+
 <agm-map
   (mapClick)="log($event)"
   #map
@@ -25,6 +26,6 @@
     <agm-info-window>Börk</agm-info-window>
   </agm-marker>
 
-  <agm-polygon [paths]="paths"> </agm-polygon>
+  <!-- <agm-polygon [paths]="paths"> </agm-polygon> -->
 </agm-map>
 

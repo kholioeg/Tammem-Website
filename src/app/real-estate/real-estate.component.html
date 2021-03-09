@@ -4,44 +4,110 @@
 
   <div class="spacer"></div>
   <div class="categories">
-    <div class="button_container">
-      <button mat-button [matMenuTriggerFor]="belowMenu">{{"all_categories" | translate}}
+      <div class="menu-button" mat-button [matMenuTriggerFor]="belowMenu">
+        <h3>{{"all_categories" | translate}}</h3>
         <mat-icon>keyboard_arrow_down</mat-icon>
-      </button>
-    </div>
+      </div>
+
     <mat-menu #belowMenu="matMenu" yPosition="below">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
+      <button mat-menu-item (click) = "selectCategory('all')">{{"all_categories" | translate}}</button>
+
+      <div *ngIf="direction === 'rtl'">
+        <button mat-menu-item *ngFor="let category of categories" (click) = "selectCategory(category)">{{category.name}}</button>
+      </div>
+
+      <div *ngIf="direction === 'ltr'">
+        <button mat-menu-item *ngFor="let category of categories">{{category.name_en}}</button>
+      </div>
     </mat-menu>
   </div>
   <div class="regions">
-    <div class="button_container">
-      <button mat-button [matMenuTriggerFor]="belowMenu">{{"all_regions" | translate}}
-        <mat-icon>keyboard_arrow_down</mat-icon>
-      </button>
+    <div class="menu-button" mat-button [matMenuTriggerFor]="regionsMenu">
+      <h3>{{"all_regions" | translate}}</h3>
+      <mat-icon>keyboard_arrow_down</mat-icon>
     </div>
-    <mat-menu #belowMenu="matMenu" yPosition="below">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
-    </mat-menu>
+
+  <mat-menu #regionsMenu="matMenu" yPosition="below">
+    <button mat-menu-item (click) = "selectRegion('all')">{{"all_regions" | translate}}</button>
+
+    <div *ngIf="direction === 'rtl'">
+      <button mat-menu-item *ngFor="let region of regions" (click) = "selectRegion(region)">{{region.name_ar}}</button>
+    </div>
+
+    <div *ngIf="direction === 'ltr'">
+      <button mat-menu-item *ngFor="let region of regions" (click) = "selectRegion(region)">{{region.name_en}}</button>
+    </div>
+  </mat-menu>
   </div>
   <div class="filter" (click) = "openFilterDialog()">
-    <div class="button_container">
-      <button mat-button>
         <mat-icon>unfold_more</mat-icon>
-        {{"filter" | translate}}
-      </button>
-  </div>
+        <h3>{{"filter" | translate}}</h3>
   </div>
   <div class="toggle">
-    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-      <mat-button-toggle value="bold">Bold</mat-button-toggle>
-      <mat-button-toggle value="italic">Italic</mat-button-toggle>
-      <mat-button-toggle value="underline">Underline</mat-button-toggle>
+    <mat-button-toggle-group #view="matButtonToggleGroup"  value="grid">
+      <mat-button-toggle value="grid">
+        <mat-icon>view_module</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="list">
+        <mat-icon>list</mat-icon>
+      </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
 </div>
-<div class="container">
+
+<div *ngIf="view.value == 'grid'; then grid; else list"></div>
+
+<ng-template #list>
+  <div class="list">
+    <div
+    class="list-card"
+    (click)="getDetails(campaign.id)"
+    *ngFor="
+      let campaign of campaigns
+        | paginate
+          : {
+              itemsPerPage: pageSize,
+              currentPage: page,
+              totalItems: count - 12
+            }
+    "
+  >
+    <img src="{{ campaign.images_urls[0] }}" alt="" />
+    <div class="content" [dir]="direction">
+        <div class="content-title">
+          <h3 *ngIf="direction === 'rtl'">{{ campaign.search_data.category_ar }}</h3>
+          <h3 *ngIf="direction === 'ltr'">{{ campaign.search_data.category_en }}</h3>
+          <span class="material-icons"> check_circle </span>
+
+          <div *ngIf="campaign.is_paid == true" class="special">
+            <span class="material-icons"> grade </span>
+            <p>مميز</p>
+          </div>
+        </div>
+
+        <div class="content-title">
+          <mat-icon> location_on </mat-icon>
+          <h5>{{ campaign.location_name }}</h5>
+        </div>
+
+        <div class="content-title">
+          <mat-icon> square_foot </mat-icon>
+          <h5>{{ campaign.area }}</h5>
+        </div>
+
+        <div class="content-title">
+          <h2>{{ campaign.description }}</h2>
+        </div>
+    </div>
+    <div class="price">
+    <h3>{{campaign.price}} {{"rs" | translate}}</h3>
+    </div>
+  </div>
+  </div>
+</ng-template>
+
+<ng-template #grid >
+  <div class="container">
   <div
     class="card"
     (click)="getDetails(campaign.id)"
@@ -58,7 +124,8 @@
     <img src="{{ campaign.images_urls[0] }}" alt="" />
     <div class="content">
       <div class="category">
-        <h2>{{ campaign.category_code }}</h2>
+        <h2 *ngIf="direction === 'rtl'">{{ campaign.search_data.category_ar }}</h2>
+        <h2 *ngIf="direction === 'ltr'">{{ campaign.search_data.category_en }}</h2>
         <span class="material-icons"> check_circle </span>
         <div *ngIf="campaign.is_paid == true">
           <p>مميز</p>
@@ -81,7 +148,9 @@
       </div>
     </div>
   </div>
+
 </div>
+</ng-template>
 
 <pagination-controls
   previousLabel="السابق"

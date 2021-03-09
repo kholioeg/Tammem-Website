@@ -12,10 +12,6 @@ export class MapService {
     return this.fs.collection('points').valueChanges();
   }
 
-  getTabouk(): Observable<any> {
-    return this.fs.collection('regions').valueChanges();
-  }
-
   getBounds(event): Observable<any> {
     return this.fs
       .collection('points', (ref) => {
@@ -27,7 +23,4 @@ export class MapService {
       .valueChanges();
   }
 
-  getRegions(): any{
-    return this.fs.collection('regions').valueChanges();
-  }
 }

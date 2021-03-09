@@ -13,9 +13,9 @@ export class DialogService {
   openConfirmDialog(component): any {
     if (component === 'OrderDialogComponent') {
       return this.dialog.open(OrderDialogComponent, {
-        width: '450px',
+        width: '420px',
         panelClass: 'order-dialog',
-        position: { top: '200px'}
+        position: { top: '80px' },
       });
     } else if (component === 'DeleteComponent') {
       return this.dialog.open(DeleteComponent, {
@@ -23,13 +23,26 @@ export class DialogService {
         panelClass: 'delete',
       });
     } else if (component === 'FilterDialogComponent') {
-      return this.dialog.open(FilterDialogComponent, {
-        width: '350px',
-        height: '100%',
-        panelClass: 'filter_dialog',
-        position: { top: '0px', left: '0px'}
-      });
+      const direction = localStorage.getItem('direction');
+      if (direction === 'rtl') {
+        return this.dialog.open(FilterDialogComponent, {
+          width: '420px',
+          height: '100%',
+          panelClass: 'filter_dialog',
+          position: { top: '0px', left: '0px' },
+        });
+      } else {
+        return this.dialog.open(FilterDialogComponent, {
+          width: '420px',
+          height: '100%',
+          panelClass: 'filter_dialog',
+          position: { top: '0px', right: '0px' },
+        });
+      }
     }
   }
 
+  closeDialog(): void {
+    this.dialog.closeAll();
+  }
 }

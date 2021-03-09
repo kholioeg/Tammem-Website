@@ -1,20 +1,21 @@
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
-import { RealEstate } from './../models/RealEstate.model';
-import {
-  AngularFirestore,
-  DocumentChangeAction,
-} from '@angular/fire/firestore';
+import { RealEstate } from '../models/RealEstate.model';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireFunctions } from '@angular/fire/functions';
+import algoliasearch from 'algoliasearch';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RealEstateService {
+export class CampaignsService {
+  client = algoliasearch('A3QG90AML9', 'b94b20314d739229f4d15b3316f93117');
+
+  index = this.client.initIndex('listings');
+
   constructor(
     private fs: AngularFirestore,
     private fb: FormBuilder,
@@ -56,20 +57,9 @@ export class RealEstateService {
   }
 
   getPage(page): Observable<any> {
-    console.log('page' + page);
-
     const getListings = this.fns.httpsCallable('getListings');
     return getListings({ pageNumber: page });
   }
-
-  // getFirstPage(): Observable<any> {
-  //   return this.fs
-  //     .collection('campaigns', (ref) => {
-  //       return ref.orderBy('date_time', 'desc').limit(12);
-  //     })
-  //     .valueChanges();
-  // }
-
 
   getRealEstate(id: string): Observable<any> {
     return this.fs.collection('RealEstates').doc(id).valueChanges();
@@ -121,33 +111,76 @@ export class RealEstateService {
         this.storage.storage.refFromURL(image).delete();
       }
     });
-
     this.fs.collection('RealEstates').doc(id).delete();
   }
 
-  initializeRealEstate(): RealEstate {
-    this.realEstate = {
-      title: '',
-      price: 0,
-      description: '',
-      area: 0,
-      interface: '',
-      bedRooms: 0,
-      flats: 0,
-      lounges: 0,
-      bathRooms: 0,
-      streetWidth: 0,
-      estateAge: 0,
-      options: [''],
-      imagesUrls: [],
-      views: 0,
-      createdFrom: new Date(),
-      createdAt: new Date(),
-      userName: '',
-      userImage: '',
-      hashId: 0,
-      location: { lat: '', lng: '' },
-    };
-    return this.realEstate;
+  getCampaignsCategories(category): Observable<any> {
+    if (category === 'all') {
+      return this.fs.collection('categories').valueChanges();
+    } else {
+      return this.fs
+        .collection('categories', (ref) =>
+          ref.where('category_type', '==', category)
+        )
+        .valueChanges();
+    }
+  }
+
+  getAllCategories(): Observable<any> {
+    return this.fs.collection('categories').valueChanges();
+  }
+
+  getAllRegions(): Observable<any> {
+    return this.fs.collection('regions').valueChanges();
+  }
+
+  getCampaignsByCategory(category: string, page: number): any {
+    const filters = `category_code:${category}`;
+    return this.index.search('', {
+      hitsPerPage: 12,
+      filters,
+      page,
+    });
+  }
+
+  getFilteredCampaignsCount(filter): any {
+
+    this.index.setSettings({
+      attributesToRetrieve: ['campaign_type', 'campaign_ownership', 'category_code']
+    });
+
+    let filters;
+    if (filter.category_code){
+      filters = `category_code:${filter.category}`;
+    }
+
+    if (filter.type){
+      console.log('type');
+      filters = `campaign_type:${filter.type}`;
+    }
+
+    if (filter.min_area){
+      filters = `area >= ${filter.min_area}`;
+    }
+
+    if (filter.max_area){
+      filters = `area <= ${filter.max_area}`;
+    }
+
+    const query = this.index.search('', {
+      hitsPerPage: 12,
+      filters,
+    });
+
+    return query;
+  }
+
+  getCampaignsByRegion(region: string, page: number): any {
+    const filters = `search_data.region_en:'${region}'`;
+    return this.index.search('', {
+      hitsPerPage: 12,
+      page,
+      filters,
+    });
   }
 }

@@ -1,0 +1,163 @@
+.add_blog{
+  width: 90%;
+  margin: 0 auto;
+  h1{
+    text-align: start;
+    height: 32px;
+    margin: 21px 0px 24px 0px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #6c7887;
+  }
+  .input_container{
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    h3{
+      height: 22px;
+      font-family: Tajawal;
+      font-size: 16px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.31;
+      letter-spacing: normal;
+      text-align: start;
+      color: #6c7887;
+    }
+    .input{
+      width: 100%;
+      height: 38px;
+      text-align: start;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid white;
+      background-color: #f5f6fa;
+    }
+    .input::placeholder{
+      font-family: Tajawal;
+      font-size: 12px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2.5;
+      letter-spacing: normal;
+      text-align: start;
+      color: #aab2bc;
+    }
+    #img{
+      display: none;
+    }
+    .image_input{
+      width: 100%;
+      height: 79px;
+      padding: 12px;
+      border-radius: 8px;
+      border: solid 1px #d5d8dc;
+      background-color: #f5f6fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p{
+        height: 19px;
+        margin: 3px 0 0;
+        font-family: Tajawal;
+        font-size: 14px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.79;
+        letter-spacing: normal;
+        text-align: center;
+        color: #6c7887;
+      }
+    }
+    .input_area{
+      width: 100%;
+      text-align: start;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid white;
+      background-color: #f5f6fa;
+      height: 101px;
+    }
+    .input_area::placeholder{
+      font-family: Tajawal;
+      font-size: 10px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2.5;
+      letter-spacing: normal;
+      text-align: start;
+      color: #aab2bc;
+    }
+  }
+  .category_input{
+    width: 100%;
+    padding: 12px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    h3{
+      font-family: Tajawal;
+      font-size: 16px;
+      margin: 0;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.31;
+      letter-spacing: normal;
+      text-align: start;
+      color: #6c7887;
+    }
+  }
+
+  .buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 49%;
+      font-family: Tajawal;
+      font-size: 16px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2.5;
+      letter-spacing: normal;
+      border: none;
+    }
+    .submit{
+      height: 49px;
+      border-radius: 8px;
+      color: white;
+      padding: 12px;
+      background-color: #7ac04e;
+    }
+    .cancel{
+      height: 49px;
+      border-radius: 8px;
+      padding: 12px;
+      font-family: Tajawal;
+      font-size: 18px;
+      font-weight: 500;
+      color: #aab2bc;
+      background-color: #ffffff;
+    }
+  }
+}

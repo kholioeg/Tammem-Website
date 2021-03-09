@@ -3,6 +3,7 @@
 
 *{
   outline: none;
+  box-sizing: border-box;
 }
 
 html,
@@ -14,6 +15,8 @@ body {
 
 body {
   margin: 0;
+  height: 100vh;
+  width: 100vw;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -22,11 +25,11 @@ body {
 }
 
 agm-map {
-  height: 500px;
+  height: 91vh;
 }
 
 .mat-sidenav-container{
-  background-color: #e9eaec;
+  background-color: #f5f6fa;
 }
 
 .green-background{
@@ -48,7 +51,15 @@ button:focus{
 }
 
 .filter_dialog .mat-dialog-container{
-  background-color: $grey-background;
+  background-color: #f5f6fa;
 }
 
 
+.mat-button-toggle-button {
+  display: flex;
+  align-items: center;
+}
+
+.mat-button-toggle-label-content{
+  width: 100%;
+}
