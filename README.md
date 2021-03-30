@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Aqar
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
@@ -25,3 +26,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# Tammem-Website
+>>>>>>> 5bd6cc40038ff3de5720369676dde97d18f81f53
