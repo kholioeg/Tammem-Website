@@ -1,4 +1,3 @@
-import { Directionality } from '@angular/cdk/bidi';
 import { Component, OnDestroy } from '@angular/core';
 
 @Component({
@@ -9,12 +8,9 @@ import { Component, OnDestroy } from '@angular/core';
 export class AppComponent implements OnDestroy {
 
 
-  constructor(
-    private dir: Directionality,
-  ) {}
+  constructor() {}
 
 
   ngOnDestroy(): void {
-    // this._dirChangeSubscription.unsubscribe();
   }
 }

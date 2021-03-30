@@ -1,0 +1,32 @@
+<div class="contain" [routerLink]="[ '/home/listings', campaign.id ]">
+  <div class="image">
+    <img [src]="campaign.thumbnail" alt="" width="87px" height="87px" />
+  </div>
+
+  <div class="title">
+    <h3 *ngIf="direction === 'rtl'">{{ campaign.category_ar }}</h3>
+    <h3 *ngIf="direction === 'ltr'">{{ campaign.category_en }}</h3>
+
+    <span class="material-icons"> check_circle </span>
+
+    <div *ngIf="campaign.campaign_type === 'special'" [dir]="direction" class="special">
+      <span class="material-icons"> grade </span>
+      <p>{{ "special-card" | translate }}</p>
+    </div>
+
+    <div class="price">
+      <h3>{{ campaign.price }} {{ "thousand" | translate }} {{ "rs" | translate }} </h3>
+    </div>
+
+    <div class="content-title">
+      <mat-icon> location_on </mat-icon>
+      <h5>{{ campaign.location_name }}</h5>
+    </div>
+
+    <div class="content-title">
+      <mat-icon> square_foot </mat-icon>
+      <h5>{{ campaign.area }} {{"meter_square" | translate}}</h5>
+    </div>
+  </div>
+
+</div>

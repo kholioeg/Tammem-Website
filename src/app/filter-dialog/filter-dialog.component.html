@@ -4,15 +4,13 @@
   <h3>{{ "filter_title" | translate }}</h3>
 
   <div class="row">
-
       <mat-label class="label" >{{ "filter_ad_categories_type" | translate }}</mat-label>
       <mat-select name= "category"  [(ngModel)]="selected" placeholder="{{ 'filter_ad_categories_type_hint' | translate }}">
           <mat-option *ngFor="let category of categories" [value]="category.code">{{category.name}}</mat-option>
       </mat-select>
-
   </div>
 
-  <div class="options-row">
+  <div class="options-row" *ngIf="url === '/home'">
     <h3>{{ "filter_ad_type" | translate }}</h3>
     <div class="options-container">
       <mat-button-toggle-group [(ngModel)]="type" name="type" aria-label="Font Style">
@@ -25,16 +23,16 @@
   <div class="options-row">
     <h3>{{ "filter_area" | translate }}</h3>
     <div class="options-container">
-      <input type="text" name="min_area" ngModel placeholder="{{'filter_area_min' | translate}}">
-      <input type="text" name="max_area" ngModel placeholder="{{'filter_area_max' | translate}}">
+      <input type="number" name="min_area" ngModel placeholder="{{'filter_area_min' | translate}}">
+      <input type="number" name="max_area" ngModel placeholder="{{'filter_area_max' | translate}}">
     </div>
   </div>
 
   <div class="options-row">
     <h3>{{ "filter_price" | translate }}</h3>
     <div class="options-container">
-      <input type="text" name = "min_price" ngModel placeholder="{{'filter_price_min' | translate}}">
-      <input type="text" name = "max_price" ngModel placeholder="{{'filter_price_max' | translate}}">
+      <input type="number" name = "min_price" ngModel placeholder="{{'filter_price_min' | translate}}">
+      <input type="number" name = "max_price" ngModel placeholder="{{'filter_price_max' | translate}}">
     </div>
   </div>
 
@@ -76,7 +74,7 @@
   </div>
 
   <div class="submit" (click)="submit(form)">
-    <h3>{{"filter_apply" | translate }} {{"filter_apply_count_1" | translate}}</h3>
+    <h3>{{"filter_apply" | translate }} {{"filter_apply_count_1" | translate}} {{count}} {{"filter_apply_count_2" | translate}}</h3>
   </div>
 </div>
 </form>

@@ -1,4 +1,4 @@
-<div *ngIf="router.url === '/home'">
+<div>
 <div class="container2">
   <h2 style="color: grey">{{ "categories" | translate }}</h2>
 
@@ -75,8 +75,7 @@
     <img src="{{ campaign.images_urls[0] }}" alt="" />
     <div class="content" [dir]="direction">
         <div class="content-title">
-          <h3 *ngIf="direction === 'rtl'">{{ campaign.search_data.category_ar }}</h3>
-          <h3 *ngIf="direction === 'ltr'">{{ campaign.search_data.category_en }}</h3>
+          <h3 >{{ campaign?.category}}</h3>
           <span class="material-icons"> check_circle </span>
 
           <div *ngIf="campaign.is_paid == true" class="special">
@@ -107,47 +106,17 @@
 </ng-template>
 
 <ng-template #grid >
-  <div class="container">
-  <div
-    class="card"
-    (click)="getDetails(campaign.id)"
-    *ngFor="
-      let campaign of campaigns
-        | paginate
-          : {
-              itemsPerPage: pageSize,
-              currentPage: page,
-              totalItems: count - 12
-            }
-    "
-  >
-    <img src="{{ campaign.images_urls[0] }}" alt="" />
-    <div class="content">
-      <div class="category">
-        <h2 *ngIf="direction === 'rtl'">{{ campaign.search_data.category_ar }}</h2>
-        <h2 *ngIf="direction === 'ltr'">{{ campaign.search_data.category_en }}</h2>
-        <span class="material-icons"> check_circle </span>
-        <div *ngIf="campaign.is_paid == true">
-          <p>مميز</p>
-          <span class="material-icons"> grade </span>
-        </div>
-      </div>
-      <div class="details">
-        <div>
-          <h3>{{ campaign.price }} رس</h3>
-        </div>
+  <div class="contain">
 
-        <div>
-          <span class="material-icons"> location_on </span>
-          <h5>{{ campaign.location_name }}</h5>
-        </div>
-        <div>
-          <span class="material-icons"> square_foot </span>
-          <h5>{{ campaign.area }} متر مربع</h5>
-        </div>
-      </div>
-    </div>
-  </div>
+    <app-campaign-grid-item [campaign] = "item" *ngFor="
+    let item of campaigns
+      | paginate
+        : {
+            itemsPerPage: 12,
+            currentPage: page,
+            totalItems: count
+          }
+  "> </app-campaign-grid-item>
 
 </div>
 </ng-template>
@@ -164,6 +133,4 @@
   <mat-spinner class="spinner"></mat-spinner>
 </div>
 </div>
-
-<router-outlet *ngIf="router.url === '/home/map'"></router-outlet>
 

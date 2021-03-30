@@ -1,0 +1,32 @@
+
+  <div class="card" (click)="getDetails(campaign.id)">
+
+    <img src="{{ campaign?.thumbnail_url }}" alt="" />
+    <div class="content">
+      <div class="category">
+        <h2 *ngIf="direction === 'rtl'">{{ campaign?.search_data.category_ar }}</h2>
+        <h2 *ngIf="direction === 'ltr'">{{ campaign?.search_data.category_en }}</h2>
+        <span class="material-icons"> check_circle </span>
+        <div *ngIf="campaign?.campaign_type == 'special'">
+          <p>مميز</p>
+          <span class="material-icons"> grade </span>
+        </div>
+      </div>
+      <div class="details">
+        <div>
+          <h3>{{ campaign?.price }} {{"rs" | translate}}</h3>
+        </div>
+
+        <div>
+          <span class="material-icons"> location_on </span>
+          <h5>{{ campaign?.location_name }}</h5>
+        </div>
+        <div>
+          <span class="material-icons"> square_foot </span>
+          <h5>{{ campaign?.area }} متر مربع</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+

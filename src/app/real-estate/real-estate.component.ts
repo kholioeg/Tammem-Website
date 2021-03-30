@@ -1,12 +1,13 @@
+import { Campaign } from 'src/app/shared/models/campaign.model';
+import { FilterDialogComponent } from './../filter-dialog/filter-dialog.component';
 import { first } from 'rxjs/operators';
 import { DialogService } from './../shared/services/dialog.service';
 import { CampaignsService } from 'src/app/shared/services/campaigns.service';
-import { Component, OnInit } from '@angular/core';
-import { RealEstate } from '../shared/models/RealEstate.model';
+import { Component, Input, OnInit } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
-import localeAr from '@angular/common/locales/ar-EG';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import localeAr from '@angular/common/locales/ar-EG';
 registerLocaleData(localeAr);
 
 @Component({
@@ -17,107 +18,114 @@ registerLocaleData(localeAr);
 export class RealEstateComponent implements OnInit {
   constructor(
     private campaignService: CampaignsService,
-    private dialogService: DialogService,
     public router: Router,
     public translate: TranslateService,
     private dialog: DialogService
   ) {}
 
-  campaigns: any[];
+  campaigns: Campaign[];
+  filteredCampaigns: any;
   direction = localStorage.getItem('direction');
   categories: Array<any>;
   category: any;
   titles: string;
-  pageSize = 12;
   page: number;
   count: number;
   regions: Array<object>;
   region: any;
+  @Input() specialCampaigns;
 
   ngOnInit(): void {
-    this.campaignService.getFirstPage().subscribe((listings) => {
-      console.log(listings);
+    this.campaignService
+      .getFirstPage(this.specialCampaigns ? true : false)
+      .then((listings) => {
+        const campaigns = [];
+        const dir = localStorage.getItem('direction');
+        for (const campaign of listings.hits){
+          if (dir === 'rtl'){
+            campaign.category = campaign.search_data.category_ar;
+          }
 
-      this.campaigns = listings.hits;
-      this.count = listings.nbHits;
-    });
-    this.campaignService.getAllCategories().pipe(first()).subscribe((categories) => {
-      this.categories = categories;
-    });
-
-    this.campaignService.getAllRegions().pipe(first()).subscribe(regions => {
-      this.regions = regions;
-    });
-  }
-
-  search(): any {
-    if (this.titles !== '') {
-      if (this.campaigns) {
-        this.campaigns = this.campaigns.filter((res) => {
-          return res.title
-            .toLocaleLowerCase()
-            .match(this.titles.toLocaleLowerCase());
-        });
-      }
-    } else if (this.titles === '') {
-      this.ngOnInit();
-    }
-  }
-
-  onSearchClear(): void {
-    this.titles = '';
-    this.search();
-  }
-
-  onDelete(id): void {
-    this.dialogService
-      .openConfirmDialog('DeleteComponent')
-      .afterClosed()
-      .subscribe((res) => {
-        if (res) {
-          this.campaignService.deleteRealEstate(id);
+          if (dir === 'ltr'){
+            campaign.category = campaign.search_data.category_en;
+          }
+          campaigns.push(campaign);
         }
+
+        this.campaigns = campaigns;
+        this.count = listings.nbHits;
       });
+    this.campaignService
+      .getAllCategories()
+      .pipe(first())
+      .subscribe((categories) => {
+        this.categories = categories;
+      });
+
+    this.campaignService
+      .getAllRegions()
+      .pipe(first())
+      .subscribe((regions) => {
+        this.regions = regions;
+      });
+
+    this.campaignService.filteredCampaigns.subscribe((campaigns: any) => {
+      if (campaigns) {
+        this.filteredCampaigns = campaigns.hits;
+        this.campaigns = campaigns.hits;
+        this.count = campaigns.nbHits;
+      }
+    });
   }
 
-  getDetails(id): void {
-    this.router.navigate(['real-estate-details/', id]);
-  }
+
 
   handlePageChange(event): any {
-    if (!this.region && !this.category){
-      console.log('aaaalllllll');
-
-      this.campaignService.getPage(event).subscribe((listings) => {
+    if (!this.region && !this.category && !this.filteredCampaigns) {
+      this.campaignService.getPage(event).then((listings) => {
         this.campaigns = listings.hits;
         this.page = listings.page;
+        console.log('all');
+
       });
-    } else if (this.region){
-      console.log('regioon');
+    } else if (this.region) {
+      this.campaignService
+        .getCampaignsByRegion(this.region.name_en, event)
+        .then((result) => {
+          this.campaigns = result.hits;
+          console.log(result);
+          console.log('region');
+
+
+        });
+    } else if (this.category) {
+      this.campaignService
+        .getCampaignsByCategory(this.category.code, event)
+        .then((result) => {
+          this.campaigns = result.hits;
+        });
+    } else if (this.filteredCampaigns) {
+      console.log('dddd');
 
       this.campaignService
-      .getCampaignsByRegion(this.region.name_en, event)
-      .then((result) => {
-        this.campaigns = result.hits;
-        // this.count = result.nbHits;
-        this.page = event;
-      });
-    } else if (this.category){
-      console.log('caaaaaaaaaaat');
-
-      this.campaignService
-      .getCampaignsByCategory(this.category.code, event)
-      .then((result) => {
-        this.campaigns = result.hits;
-        // this.count = result.nbHits;
-        this.page = event;
-      });
+        .getFilteredCampaigns(
+          JSON.parse(localStorage.getItem('filter')),
+          false,
+          event
+        )
+        .then((campaigns) => {
+          this.count = campaigns.nbHits;
+          this.campaignService.filteredCampaigns.next(campaigns);
+          this.dialog.closeDialog();
+        });
     }
+    console.log(this.filteredCampaigns);
 
+    this.page = event;
   }
 
   openFilterDialog(): void {
-    this.dialog.openConfirmDialog('FilterDialogComponent');
+    this.dialog.openConfirmDialog(FilterDialogComponent, 'FilterDialogComponent');
   }
 
   selectCategory(category): void {
@@ -130,14 +138,16 @@ export class RealEstateComponent implements OnInit {
       });
   }
 
-  selectRegion(region): void{
+  selectRegion(region): void {
     this.region = region;
     this.campaignService
-    .getCampaignsByRegion(region.name_en, 1)
-    .then((result) => {
-      console.log(result);
-      this.campaigns = result.hits;
-      this.count = result.nbHits;
-    });
+      .getCampaignsByRegion(region.name_en, 1)
+      .then((result) => {
+        console.log(result);
+        console.log('reg');
+
+        this.campaigns = result.hits;
+        this.count = result.nbHits;
+      });
   }
 }

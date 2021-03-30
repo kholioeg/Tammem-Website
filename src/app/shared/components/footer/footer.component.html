@@ -1,20 +1,40 @@
 
-  <mat-toolbar class="toolbar">
+  <mat-toolbar *ngIf="url === '/home' ||  url === '/home/map'" class="menu" [ngClass] = "{'map': url === '/home/map'}" >
     <div class="select">
-    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" value = "menu">
-      <mat-button-toggle value="map" [routerLink]="['/home/map']">{{"map" | translate}}</mat-button-toggle>
-      <mat-button-toggle value="menu" [routerLink]="['/home']">{{"menu" | translate}}</mat-button-toggle>
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" value = "map">
+      <mat-button-toggle value="map" [routerLink]="['/home/map']">
+        <h3>{{"map" | translate}}</h3>
+      </mat-button-toggle>
+
+      <mat-button-toggle value="menu" [routerLink]="['/home']">
+        <h3>{{"menu" | translate}}</h3>
+      </mat-button-toggle>
     </mat-button-toggle-group>
     </div>
 
     <div class="options">
-      <div class="round" >
+      <div class="round">
         <mat-icon>location_on</mat-icon>
       </div>
+
+      <div class="round" *ngIf="url === '/home/map'">
+        <mat-icon class="icon">public</mat-icon>
+      </div>
+
       <img src="../../../../assets/icons/menu_2.svg" (click) = "openDialog()" alt="">
-      <div class="round">
+
+      <div class="round" *ngIf="url === '/home/map'">
+        <mat-icon class="icon">touch_app</mat-icon>
+      </div>
+
+      <div class="round" *ngIf="url === '/home/map'">
+        <mat-icon class="icon">public</mat-icon>
+      </div>
+
+      <div class="round" *ngIf="url === '/home'">
         <img src="../../../../assets/icons/Regions.svg" alt="">
       </div>
+
     </div>
 
     <div></div>

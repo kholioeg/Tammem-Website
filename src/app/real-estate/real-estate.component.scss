@@ -1,23 +1,12 @@
 @import "../shared/scss/variables.scss";
 
-.container {
+.contain {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 30px;
   width: 95%;
   margin: 0 auto;
   max-width: 1920px;
-  .card {
-    background-color: white;
-    width: 100%;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    img {
-      width: 100%;
-      height: 178px;
-    }
-  }
 
 }
 

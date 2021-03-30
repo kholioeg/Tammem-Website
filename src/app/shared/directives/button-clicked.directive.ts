@@ -15,3 +15,4 @@ export class ButtonClickedDirective {
     this.render.addClass(this.elRef.nativeElement, 'green-background');
   }
 }
+

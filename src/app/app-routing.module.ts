@@ -18,17 +18,16 @@ import { RealEstateComponent } from './real-estate/real-estate.component';
 import { EditProfileComponent } from './user-profile/edit-profile/edit-profile.component';
 import { FinancialMovementComponent } from './user-profile/financial-movement/financial-movement.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home',
     component: RealEstateComponent,
-    children: [
-      {
-        path: 'map',
-        component: MapComponent,
-      },
-    ]
+  },
+  {
+    path: 'home/map',
+    component: MapComponent,
   },
   {
     path: 'realestate/add',
@@ -41,7 +40,7 @@ const routes: Routes = [
     canActivate: [AuthguardService],
   },
   {
-    path: 'real-estate-details/:id',
+    path: 'home/listings/:id',
     component: DetailsComponent,
     canActivate: [AuthguardService],
   },

@@ -24,6 +24,8 @@ export class AuthService {
     private db: AngularFirestore
   ) {
     this.user = afAuth.user;
+    console.log(this.user);
+
   }
 
   // initializeWindowRef(): void {
@@ -68,7 +70,7 @@ export class AuthService {
   getUser(id): Observable<any> {
     return this.db.collection('users').doc(id).valueChanges();
   }
-  
+
   updateUserLang(lang, id): void {
     this.db.collection('users').doc(id).update({
       user_app_language: lang,

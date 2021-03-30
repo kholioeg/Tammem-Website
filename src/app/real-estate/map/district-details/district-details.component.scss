@@ -1,0 +1,42 @@
+.contain {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  cursor: pointer;
+  top: 170px;
+  .item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 6px;
+    padding: 3px 15px 0px 15px;
+    opacity: 0.6;
+    border-radius: 16px;
+    background-color: #6c7887;
+    h3{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      font-family: Tajawal;
+      font-size: 12px;
+      font-weight: 500;
+      color: #ffffff;
+    }
+
+    mat-icon{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      font-size: 16px;
+      text-align: center;
+      color: #ffc148;
+    }
+    .statstics{
+      color: white;
+    }
+  }
+}

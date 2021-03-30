@@ -11,7 +11,6 @@ import {
 import { Router } from '@angular/router';
 import {
   SearchCountryField,
-  TooltipLabel,
   CountryISO,
   PhoneNumberFormat,
 } from 'ngx-intl-tel-input';
@@ -35,7 +34,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   verificationCode: string;
   user: any;
   SearchCountryField = SearchCountryField;
-  TooltipLabel = TooltipLabel;
+
   CountryISO = CountryISO;
   PhoneNumberFormat = PhoneNumberFormat;
   preferredCountries: CountryISO[] = [
@@ -83,34 +82,4 @@ export class LoginComponent implements OnInit, AfterViewInit {
       });
   }
 
-  // userClick(): void {
-  //   this.isUser = !this.isUser;
-  //   if (this.isOwner) {
-  //     this.isOwner = !this.isOwner;
-  //   }
-  //   if (this.isBroker) {
-  //     this.isBroker = !this.isBroker;
-  //   }
-  //   this.form.profile_type = 'user';
-  // }
-  // ownerClick(): void {
-  //   this.isOwner = !this.isOwner;
-  //   if (this.isUser) {
-  //     this.isUser = !this.isUser;
-  //   }
-  //   if (this.isBroker) {
-  //     this.isBroker = !this.isBroker;
-  //   }
-  //   this.form.profile_type = 'owner';
-  // }
-  // brokerClick(): void {
-  //   this.isBroker = !this.isBroker;
-  //   if (this.isUser) {
-  //     this.isUser = !this.isUser;
-  //   }
-  //   if (this.isOwner) {
-  //     this.isOwner = !this.isOwner;
-  //   }
-  //   this.form.profile_type = 'broker';
-  // }
 }

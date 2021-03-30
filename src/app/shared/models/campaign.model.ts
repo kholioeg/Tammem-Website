@@ -16,6 +16,7 @@ export class Campaign {
     bedrooms: number;
     building_age: number;
     building_side_code: string;
+    building_side: string;
     car_garage: boolean;
     coverage: Array<string>
     driver_room: boolean;
@@ -41,6 +42,7 @@ export class Campaign {
   visits_counts_daily: number;
   advertiser_uid: string;
   phone_number: string;
+  seen_count: number;
   search_data: {
     category_ar: string,
     category_en: string,

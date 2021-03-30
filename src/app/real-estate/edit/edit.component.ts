@@ -35,7 +35,7 @@ export class EditComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
-    this.campaignService.getRealEstate(this.id).subscribe(
+    this.campaignService.getCampaignById(this.id).subscribe(
       async (data) => {
         this.realEstateFromServer = await data;
         this.form.setValue({

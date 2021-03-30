@@ -1,10 +1,19 @@
-#container {
+#contain {
   display: grid;
-  width: 80%;
+  width: 95%;
   grid-template-columns: 4fr 1fr;
   margin: 30px auto;
   justify-items: start;
 }
+.right-side{
+  width: 100%;
+}
+@media (max-width: 768px) {
+  #contain {
+    grid-template-columns: 1fr;
+  }
+}
+
 #header {
   grid-column: 1/4;
   justify-self: start;
@@ -52,51 +61,284 @@
 }
 
 #details {
-  display: grid;
-  grid-template-columns: 1fr 5fr 2fr;
+  .details_title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    .special {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8cb4e;
+      color: white;
+      width: 50px;
+      border-radius: 18px;
+      .material-icons {
+        font-size: 12px;
+      }
+    }
+    h3 {
+      margin: 0 8px;
+      font-family: Tajawal;
+      font-size: 20px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.35;
+      letter-spacing: normal;
+      text-align: start;
+      color: #1e4488;
+    }
+    .details_price {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      h3 {
+        font-family: Tajawal;
+        font-size: 16px;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.31;
+        letter-spacing: normal;
+        text-align: start;
+        color: #6c7887;
+        margin: 0;
+      }
+
+      h2 {
+        font-family: Tajawal;
+        font-size: 20px;
+        margin: 0;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.35;
+        letter-spacing: normal;
+        text-align: start;
+        color: #7ac04e;
+      }
+    }
+
+    .details_price[dir="rtl"] {
+      margin-right: auto;
+    }
+
+    .details_price[dir="ltr"] {
+      margin-left: auto;
+    }
+  }
+
+  .address,
+  .meters {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    h3 {
+      margin: 0;
+      font-family: Tajawal;
+      font-size: 14px;
+      text-align: start;
+      color: #6c7887;
+    }
+    mat-icon {
+      font-size: 16px;
+      margin: 0px 8px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      text-align: right;
+      color: #d5d8dc;
+    }
+  }
 }
 
-.box{
+.description {
+  h2 {
+    font-family: Tajawal;
+    margin: 0 8px;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.35;
+    letter-spacing: normal;
+    text-align: right;
+    color: #1e4488;
+  }
+  p {
+    margin: 3px 8px;
+    font-family: Tajawal;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: start;
+    color: #6c7887;
+  }
+}
+.box {
   margin: 20px 0;
+  width: 100%;
   border-radius: 10px;
   padding: 20px 15px;
   background-color: white;
-  width: 90%;
 }
 
-#details_price{
-  justify-self: left;
-}
-
-.address{
-  grid-column: 1/4;
-}
-
-.address .text{
-  margin-right: 10px ;
-}
-
-.meters{
-  grid-column: 1/4;
-}
-
-.meters .text{
-  margin-right: 10px ;
-}
-
-.ad-details{
+.ad-details {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr;
+  .title {
+    grid-column: 1/4;
+    h3{
+      margin: 17px;
+      font-family: Tajawal;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.35;
+      text-align: start;
+      color: #1e4488;
+    }
+  }
+  .details_columns {
+    display: grid;
+    grid-column: 1/4;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+    text-align: start;
+    margin: 17px;
+    h2, h3{
+      font-family: Tajawal;
+      font-size: 14px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.43;
+      letter-spacing: normal;
+      text-align: right;
+      color: #6c7887;
+    }
+    h3{
+      color: #7ac04e;
+    }
+  }
 }
 
-.ad-details .title{
-  grid-column: 1/4;
+
+
+ngb-carousel{
+  height: 400px !important;
 }
 
-.ad-details .details_columns{
-  display: grid;
-  grid-column: 1/4;
-  grid-template-columns: 1fr 1fr 1fr 2fr;
+.picsum-img-wrapper {
+  height: 400px;
+  width: 100%;
+  img {
+    width: 100%;
+    height: 400px;
+    margin: 0;
+    border-radius: 16px;
+    // margin-top: -50%;
+  }
+}
+
+.left-side {
+  .advertiser_details {
+    min-width: 300px;
+    margin: 0 10px;
+    padding: 15px;
+    border-radius: 12px;
+    border: solid 1px #eff1f9;
+    background-color: #ffffff;
+    h3 {
+      font-family: Tajawal;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: start;
+      color: #1e4488;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        background-color: #f5f6fa;
+        overflow: hidden;
+        img {
+          width: 65px;
+          height: 65px;
+        }
+      }
+      .details {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 10px;
+        h3 {
+          margin: 0;
+          font-family: Tajawal;
+          font-size: 14px;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.43;
+          letter-spacing: normal;
+          text-align: right;
+          color: #6c7887;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .carousel-indicators .active {
+  width: 18px;
+  height: 6px;
+  border-radius: 4px;
+  background-color: #7ac04e;
+}
+
+::ng-deep .carousel-indicators li {
+  width: 6px;
+  height: 6px;
+  margin: 0 4px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+::ng-deep .carousel-control-prev-icon {
+  background-image: url("../../../assets/icons/left.png");
+  background-size: 40px 40px;
+}
+
+::ng-deep .carousel-control-next-icon {
+  background-image: url("../../../assets/icons/right.png");
+  background-size: 40px 40px;
+
+}
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #d3d3d3;
+}
+.full {
+  color: #f8cb4e;
+}
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: #f8cb4e;
 }
 
 

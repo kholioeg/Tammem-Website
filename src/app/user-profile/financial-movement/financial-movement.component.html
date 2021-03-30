@@ -23,11 +23,45 @@
         <h3>{{"since" | translate}}</h3>
       </div>
 
-      <div style="text-align:center">
-        <h1>
-            ng-starrating demo
-        </h1>
-        <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false"></star-rating>
+      <div class="header">
+        <ngb-rating [max] = "5" [(rate)] = "rating" readonly = "true"></ngb-rating>
+        <h3>400 {{"rial" | translate}}</h3>
+      </div>
+
+      <div class="content">
+        <h3></h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <h3>{{"service_no" | translate}} #222</h3>
+        <h3>{{"since" | translate}}</h3>
+      </div>
+
+      <div class="header">
+        <ngb-rating [max] = "5" [(rate)] = "rating" readonly = "true"></ngb-rating>
+        <h3>400 {{"rial" | translate}}</h3>
+      </div>
+
+      <div class="content">
+        <h3></h3>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <h3>{{"service_no" | translate}} #222</h3>
+        <h3>{{"since" | translate}}</h3>
+      </div>
+
+      <div class="header">
+        <ngb-rating [max] = "5" [(rate)] = "rating" readonly = "true"></ngb-rating>
+        <h3>400 {{"rial" | translate}}</h3>
+      </div>
+
+      <div class="content">
+        <h3></h3>
       </div>
     </div>
   </div>

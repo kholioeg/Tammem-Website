@@ -1,0 +1,131 @@
+<div *ngIf="district">
+  <div class="toggle">
+    <mat-button-toggle-group #option="matButtonToggleGroup" value="{{district.value}}">
+      <mat-button-toggle value="prices">
+        <h3>{{ "average_prices" | translate }}</h3>
+      </mat-button-toggle>
+      <mat-button-toggle value="ratings">
+        <h3>{{ "district_rates" | translate }}</h3>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div *ngIf="option.value == 'ratings'; then ratings; else prices"></div>
+
+  <ng-template #ratings>
+    <div class="header">
+      <h3>{{ district?.rating }}</h3>
+
+      <ng-template #t let-fill="fill">
+        <span class="star" [class.full]="fill === 100">
+          <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+        </span>
+      </ng-template>
+
+      <ngb-rating
+        [dir]="direction"
+        [(rate)]="district.rating"
+        [starTemplate]="t"
+        [readonly]="true"
+        [max]="5"
+      ></ngb-rating>
+    </div>
+
+    <div>
+      <div class="progress-row" [dir]="direction">
+        <h3>{{ "electricity_water_rating" | translate }}</h3>
+        <mat-progress-bar
+          appProgressBarColor="{{
+            district.properties_avg_rating.electricity_water
+          }}"
+          color="{{ district.electricity_water_color }}"
+          value="{{ district.properties_avg_rating.electricity_water * 20 }}"
+        ></mat-progress-bar>
+        <h2>{{ district.properties_avg_rating.electricity_water }}</h2>
+      </div>
+
+      <div class="progress-row" [dir]="direction">
+        <h3>{{ "internet_rating" | translate }}</h3>
+        <mat-progress-bar
+          appProgressBarColor="{{ district.properties_avg_rating.internet }}"
+          color="{{ district.internet_color }}"
+          value="{{ district.properties_avg_rating.internet * 20 }}"
+        ></mat-progress-bar>
+        <h2>{{ district.properties_avg_rating.internet }}</h2>
+      </div>
+
+      <div class="progress-row" [dir]="direction">
+        <h3>{{ "street_rating" | translate }}</h3>
+        <mat-progress-bar
+          appProgressBarColor="{{ district.properties_avg_rating.streets }}"
+          color="{{ district.streets_color }}"
+          value="{{ district.properties_avg_rating.streets * 20 }}"
+        ></mat-progress-bar>
+        <h2>{{ district.properties_avg_rating.streets }}</h2>
+      </div>
+
+      <div class="progress-row" [dir]="direction">
+        <h3>{{ "medical_rating" | translate }}</h3>
+        <mat-progress-bar
+          appProgressBarColor="{{ district.properties_avg_rating.medical }}"
+          color="{{ district.medical_color }}"
+          value="{{ district.properties_avg_rating.medical * 20 }}"
+        ></mat-progress-bar>
+        <h2>{{ district.properties_avg_rating.medical }}</h2>
+      </div>
+
+      <div class="progress-row" [dir]="direction">
+        <h3>{{ "educational_rating" | translate }}</h3>
+        <mat-progress-bar
+          appProgressBarColor="{{ district.properties_avg_rating.educational }}"
+          color="{{ district.educational_color }}"
+          value="{{ district.properties_avg_rating.educational * 20 }}"
+        ></mat-progress-bar>
+        <h2>{{ district.properties_avg_rating.educational }}</h2>
+      </div>
+    </div>
+
+    <div class="ratings" *ngIf="districtRating?.length">
+      <div class="rating" *ngFor="let rating of districtRating" [dir] = "direction">
+        <div class="head" *ngIf="rating.rating_content">
+
+          <ng-template #t2 let-fill="fill">
+            <span class="star2" [class.full]="fill === 100">
+              <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+            </span>
+          </ng-template>
+
+          <ngb-rating
+            [dir]="direction"
+            [(rate)]="rating.auto_avg_rating"
+            [starTemplate]="t2"
+            [readonly]="true"
+            [max]="5"
+          ></ngb-rating>
+          <h2>{{rating.date_time.toDate() | date}}</h2>
+
+        </div>
+        <div class="content">
+          <h3>{{rating.rating_content}}</h3>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #prices>
+
+    <div class="average_prices" [dir]="direction">
+        <h1>{{"district_avg_price_title" | translate}}</h1>
+
+        <div class="item" *ngFor="let item of averagePrices">
+          <h3>{{item.half | translate}} {{item.year}}</h3>
+
+          <div class="price">
+            <h3 [style.color]="item.color"> {{item.average_meter_price}} {{"rial" | translate}}</h3>
+            <mat-icon [style.color]="item.color">{{item.icon}}</mat-icon>
+          </div>
+        </div>
+    </div>
+
+  </ng-template>
+</div>

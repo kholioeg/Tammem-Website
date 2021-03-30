@@ -1,0 +1,129 @@
+.contain {
+  width: 300px;
+  padding: 10px;
+  box-shadow: 0 3px 10px 0 rgba(172, 179, 187, 0.1);
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 120px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  left: calc(50% - 150px);
+  border-radius: 7px;
+  cursor: pointer;
+  .image {
+    align-self: flex-start;
+    width: 87px;
+    height: 87px;
+    img {
+      border-radius: 7px;
+    }
+  }
+  .title {
+    align-self: start;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    h3 {
+      font-family: Tajawal;
+      font-size: 14px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.36;
+      letter-spacing: normal;
+      text-align: start;
+      color: #6c7887;
+      margin: 0 7px;
+    }
+    span {
+      width: 12px;
+      height: 13px;
+      font-size: 12px;
+      text-align: center;
+      color: #1e4488;
+    }
+
+    .special {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 46px;
+      height: 21px;
+      border-radius: 11px;
+      background-color: #f8cb4e;
+      p {
+        margin: 2px;
+        width: 17px;
+        height: 12px;
+        font-family: Tajawal;
+        font-size: 9px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: start;
+        color: #ffffff;
+      }
+      span {
+        color: white;
+        margin: 0 2px;
+      }
+    }
+
+    .special[dir="rtl"] {
+      margin-right: auto;
+    }
+    .special[dir="ltr"] {
+      margin-left: auto;
+    }
+    .price {
+      h3 {
+        width: 100%;
+        margin: 10px 8px;
+        font-family: Tajawal;
+        font-size: 14px;
+        font-weight: 500;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.36;
+        letter-spacing: normal;
+        text-align: right;
+        color: #1e4488;
+      }
+    }
+    .content-title {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-top: 10px;
+      h5{
+        margin: 0;
+        font-family: Tajawal;
+        font-size: 8px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: start;
+        color: #6c7887;
+      }
+      mat-icon{
+        width: 12px;
+        height: 13px;
+        margin: 0 10px;
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: center;
+        color: #1e4488;
+      }
+    }
+  }
+}

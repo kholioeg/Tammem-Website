@@ -1,0 +1,38 @@
+.contain {
+  width: 95%;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 12px;
+  background-color: #1e4488;
+  h3 {
+    font-family: Tajawal;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.33;
+    text-align: start;
+    margin: 10px;
+    color: #ffffff;
+  }
+  .card-container {
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    padding: 10px;
+  }
+}
+
+.contain[dir="rtl"] {
+  ::ng-deep .owl-carousel .owl-stage {
+    margin-right: -70px;
+  }
+}
+
+.contain[dir="ltr"] {
+  ::ng-deep .owl-carousel .owl-stage {
+    margin-left: -70px;
+  }
+}
+
+::ng-deep owl-stage {
+  display: flex;
+}

@@ -1,11 +1,45 @@
 @import "../../scss/variables.scss";
 
-.toolbar{
+.menu{
   position: sticky;
+  z-index: 3;
   bottom: 0;
-  background-color: white;
   display: flex;
   justify-content: space-between;
+  background-color: white;
+  align-items: center;
+  .options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    .round{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 2px 2px 3px rgb(179, 179, 179);
+      background-color: white;
+      width: 42px;
+      height: 42px;
+      margin: 0 7px;
+      border-radius: 50%;
+      mat-icon{
+        color: $primary-green;
+      }
+
+      .icon{
+        color: #d5d8dc;
+      }
+    }
+  }
+}
+
+.map{
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  background: none;
   align-items: center;
   .options{
     display: flex;
@@ -29,18 +63,45 @@
 }
 
 .select{
-  padding: 5px;
-  border: 1px solid $primary-blue;
-  height: 100%;
-  border-radius: 5px;
+  border-radius: 8px;
+  border: solid 1px #1e4488;
+  background-color: #ffffff;
 }
 
 .mat-button-toggle-checked{
-  background-color: $primary-blue;
-  color: white;
+  border-radius: 8px;
+  height: 34px;
+  background-color: #1e4488;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h3{
+    font-family: Tajawal;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.36;
+    letter-spacing: normal;
+    text-align: center;
+    margin: 0;
+    color: #ffffff !important;
+  }
 }
 
 .mat-button-toggle{
-  border-radius: 5px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h3{
+    font-family: Tajawal;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.36;
+    letter-spacing: normal;
+    text-align: center;
+    margin: 0;
+    color: #1e4488;
+  }
 }
 

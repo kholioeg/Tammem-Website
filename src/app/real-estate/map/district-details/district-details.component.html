@@ -1,0 +1,21 @@
+<div class="contain">
+
+  <div class="item">
+    <h3> {{ campaignsCount }} </h3>
+    <h3> {{"from_total_campagins_count" | translate}} </h3>
+    <h3> {{ totalCampaignsCount }} </h3>
+
+  </div>
+
+  <div class="item" (click)="getDistrictDetails('ratings')">
+    <h3> {{ district }} </h3>
+    <mat-icon>grade</mat-icon>
+    <h3>{{ districtFromDb?.rating ? districtFromDb.rating : '-' }}</h3>
+  </div>
+
+  <div class="item" (click)="getDistrictDetails('prices')">
+    <mat-icon class = "statstics">legend_toggle</mat-icon>
+    <h3> {{ "district_statistics" | translate }} </h3>
+  </div>
+</div>
+

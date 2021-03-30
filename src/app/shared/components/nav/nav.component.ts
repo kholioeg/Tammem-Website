@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { AuthDialogService } from './../../services/auth-dialog.service';
 import { AuthService } from './../../services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -24,7 +24,7 @@ export class NavComponent implements OnInit, OnDestroy {
   ];
   user: any;
   isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
+    .observe('(max-width: 968px) and (orientation: portrait), (max-width: 968px) and (orientation: landscape)')
     .pipe(
       map((result) => result.matches),
       shareReplay()
@@ -35,10 +35,10 @@ export class NavComponent implements OnInit, OnDestroy {
     public translate: TranslateService,
     private authService: AuthService,
     private dialog: AuthDialogService,
-    public router: Router
   ) {}
 
   ngOnInit(): void {
+
     if (this.direction === 'rtl'){
       this.translate.use('ar');
       this.flags =  [
@@ -90,7 +90,12 @@ export class NavComponent implements OnInit, OnDestroy {
     if (this.user) {
       this.authService.updateUserLang(flag.lang, this.user.uid);
     }
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
+
 
   ngOnDestroy(): void {
     this.userSubscribtions$.unsubscribe();

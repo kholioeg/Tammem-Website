@@ -1,12 +1,11 @@
 <agm-drawing-manager
-  (circleComplete)="circleAdded($event)"
+  (overlayComplete)="circleAdded($event)"
   #drawing="agmDrawingManager"
   [drawingMode]="'circle'"
   [circleOptions]="{ fillColor: 'red', radius: 150 }"
 ></agm-drawing-manager>
 
 <agm-map
-  (mapClick)="log($event)"
   #map
   [latitude]="lat"
   [longitude]="lng"
@@ -14,18 +13,31 @@
   [mapTypeId]="'terrain'"
   [zoom]="zoom"
   [agmDrawingManager]="drawing"
+  (boundsChange)="boundsChange($event)"
+  (mapClick) ="mapClick($event)"
+  (centerChange) = "centerChange($event)"
 >
+  <agm-marker
+    [latitude]="currentLocationMarker?.lat"
+    [longitude]="currentLocationMarker?.lng"
+    [markerDraggable]="false"
+  >
+  </agm-marker>
 
   <agm-marker
     *ngFor="let m of markers; let i = index"
     [latitude]="m.lat"
     [longitude]="m.lng"
-    [label]="m.label"
-    [markerDraggable]="m.draggable"
+    [markerDraggable]="false"
+    [label]="{ color: 'white', text: m.price, fontSize: '14px' }"
+    [iconWidth]="20"
+    [iconHeight]="20"
+    [iconUrl]="m.icon"
+    (markerClick)="setDetails(m)"
   >
-    <agm-info-window>Börk</agm-info-window>
   </agm-marker>
 
-  <!-- <agm-polygon [paths]="paths"> </agm-polygon> -->
 </agm-map>
 
+<app-district-details [district]="district" [totalCampaignsCount] = "totalCampaignsCount" [campaignsCount] = "markers.length"></app-district-details>
+<app-map-campaign *ngIf="showCampaignDetails"></app-map-campaign>

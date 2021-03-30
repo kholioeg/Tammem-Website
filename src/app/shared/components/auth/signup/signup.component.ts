@@ -5,7 +5,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   SearchCountryField,
-  TooltipLabel,
+
   CountryISO,
   PhoneNumberFormat,
 } from 'ngx-intl-tel-input';
@@ -26,7 +26,6 @@ export class SignupComponent implements OnInit, AfterViewInit{
   verificationCode: string;
   user: any;
   SearchCountryField = SearchCountryField;
-  TooltipLabel = TooltipLabel;
   CountryISO = CountryISO;
   PhoneNumberFormat = PhoneNumberFormat;
   preferredCountries: CountryISO[] = [

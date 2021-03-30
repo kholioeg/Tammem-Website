@@ -77,10 +77,15 @@ import { PlusMinusComponent } from './shared/components/plus-minus/plus-minus.co
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FinancialMovementComponent } from './user-profile/financial-movement/financial-movement.component';
-import { RatingModule } from 'ng-starrating';
-
-
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MapCampaignComponent } from './real-estate/map/map-campaign/map-campaign.component';
+import { DistrictDetailsComponent } from './real-estate/map/district-details/district-details.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CampaignGridItemComponent } from './real-estate/campaign-grid-item/campaign-grid-item.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { RelatedCampaignsComponent } from './real-estate/details/related-campaigns/related-campaigns.component';
+import { DistrictDetailsDialogComponent } from './real-estate/map/district-details-dialog/district-details-dialog.component';
+import { ProgressBarColorDirective } from './shared/directives/progress-bar-color.directive';
 
 @NgModule({
   declarations: [
@@ -115,6 +120,12 @@ import { RatingModule } from 'ng-starrating';
     AddCampaignComponent,
     PlusMinusComponent,
     FinancialMovementComponent,
+    MapCampaignComponent,
+    DistrictDetailsComponent,
+    CampaignGridItemComponent,
+    RelatedCampaignsComponent,
+    DistrictDetailsDialogComponent,
+    ProgressBarColorDirective,
   ],
   imports: [
     BrowserModule,
@@ -164,6 +175,8 @@ import { RatingModule } from 'ng-starrating';
     MatRippleModule,
     MatDividerModule,
     MatSlideToggleModule,
+    MatProgressBarModule,
+    CarouselModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -171,7 +184,7 @@ import { RatingModule } from 'ng-starrating';
         deps: [HttpClient],
       },
     }),
-    RatingModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

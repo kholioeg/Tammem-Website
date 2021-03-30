@@ -1,0 +1,11 @@
+
+<div class="contain" [dir] ="direction">
+  <h3>{{"similar_campaigns" | translate }}</h3>
+  <owl-carousel-o [options]="customOptions" >
+    <ng-template carouselSlide  *ngFor="let campaign of relatedCampaigns">
+      <div class="card-container">
+        <app-campaign-grid-item (click) = "getDetails(campaign.id)"  [dir]="direction" [campaign]="campaign"></app-campaign-grid-item>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>
